@@ -1,0 +1,249 @@
+\documentclass[a4paper]{article}
+
+\usepackage[german,ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{scrextend}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[margin=0.7in]{geometry}
+\pagestyle{fancy}
+
+\lhead{Mathe 3 - Zusammenfassung}
+\rhead{\thepage}
+\cfoot{Johann Wagner}
+\rfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newenvironment{exEnv}{\ \\\begin{addmargin}[4em]{4em}\begin{em}}{\end{em}\end{addmargin}\ }
+
+\author{Johann Wagner}
+\title{Mathe III - Zusammenfassung}
+
+
+\begin{document}
+\maketitle
+\newpage
+
+\section{Wahrscheinlichkeitstheorie}
+	\subsection{Zufallsexperiment}
+	Ein \textbf{Zufallsexperiment} ist ein Vorgang, der unter \textbf{gleichen} Bedingungen beliebig oft wiederholt werden kann.\\
+	Die Menge \textbf{aller} möglichen Ereignisse ist der Ereignisraum $\Omega$. Teilmengen des Ereignisraums heißen Ereignis ($A \subseteq \Omega$).
+	
+	\begin{exEnv}
+	Bsp.: Das Zufallsexperiment ist ein Würfel. Der Würfel hat einen Ereignisraum $\Omega = \{1,2,3,4,5,6\}$. Das Würfeln einer geraden Zahl ist das Ereignis $A = \{2,4,6\}$.
+	\end{exEnv}
+	\begin{align*}
+		|A| &= 1 \rightarrow \text{Elementarereignis}\\
+		 A &= \Omega \rightarrow \text{Sicheres Ereignis}\\
+		 A &= \emptyset \rightarrow \text{Unmögliches Ereignis}\\
+		 A \cap B &= \emptyset \rightarrow \text{Disjunkte Ereignisse}\\
+		 \bar{A} &= \Omega \backslash A \rightarrow \text{Gegenereignis}
+	\end{align*}
+	
+	\subsection{Wahrscheinlichkeitsraum}
+	Annahmen: $|\Omega| = |\mathbb{N}|, \Omega = \{\omega_1,\omega_2, ..., \omega_n \}, \Omega = \{\omega_i | i \in \mathbb{N}\}$\\
+	Ein Abbildung $P: 2^\Omega \rightarrow \mathbb{R}$ heißt Wahrscheinlichkeitsraum, wenn gilt:
+	\begin{align}
+		P(A) &> 0 \text{ für alle } A \subset \Omega\\
+		P(\Omega) &= 1\\
+		P(A_1 \cup A_2) &= P(A_1) + P(A_2), A_1 \cap A_2 = \emptyset
+	\end{align}
+	Das \textbf{Tupel} ($\Omega, P$) ist dann ein \textbf{Wahrscheinlichkeitsraum} mit der \textbf{Ereignismenge} $\Omega$ und dem \textbf{Wahrscheinlichkeitsmaß} $P$. Eine \textbf{Wahrscheinlichkeit} gibt also an, wie oft ein Ergebnis \textbf{ungefähr} eintritt, wenn man das Zufallsexperiment nur lange genug wiederholt.
+	
+	\begin{exEnv}
+		Der einfachste Wahrscheinlichkeitsraum ist ein LaPlace-Experiment. $\Omega$ ist eine endliche Menge an Ereignissen. Für P gilt also: $P(A) = \frac{|A|}{|\Omega|}$.
+	\end{exEnv}
+
+
+	Es gilt für einen beliebigen Wahrscheinlichkeitsraum $(\Omega, P)$:
+	\setcounter{equation}{0}
+	\begin{align}
+		P(\Omega \backslash A) &= 1 - P(A)\\
+		P(\emptyset) &= 0\\
+		P(A \cup B) &= P(A) + P(B) - P(A\cap B)\\
+		A \subseteq B &\iff P(A) \leq P(B)
+	\end{align}
+	
+	\subsection{Realisierungen}
+	Eine Zufallsvariable X ist auf einen Wahrscheinlichkeitsraum $(\Omega, P)$ definiert.\\
+	$x = X(\omega)$ mit $\omega \in \Omega$ bezeichnet eine Realisierung von X.
+	
+	\subsection{Ereignisse}
+	Zwei Ereignisse heißen unabhängig, wenn gilt, dass $P(A\cap B) = P(A) \cdot P(B)$.\\
+	Es sei ein Ereignis A gegeben. Das Ereignis A ist von dem Ereignis B abhängig. Wir suchen das Wahrscheinlichkeitsmaß von A.\\
+	
+	\begin{align*}
+		P(A|B) &= \frac{P(A \cap B)}{P(B)} \nonumber \\
+		P(A\cap B) &= P(B) \cdot P(A|B)\\
+				   &= P(A) \cdot P(B|A)\\
+				   P_B(A) &= P(A|B)
+	\end{align*}
+	
+	\begin{exEnv}
+		Wir würfeln mit einem Würfel einmalig mit $A = \{\text{Es wird eine gerade Zahl gewürfelt.}\}$.
+		Es gilt: 
+		\begin{align*}
+			P_A(\{1\}) &= 0 \\
+			P_A(\{2\}) &= \frac{1}{3}\\
+			P_A(\{3\}) &= 0\\
+			P_A(\{4\}) &= \frac{1}{3}\\
+			P_A(\{5\}) &= 0\\
+			P_A(\{6\}) &= \frac{1}{3}
+		\end{align*}
+		In Worten: Wir wissen, dass A eine gerade Zahl ist. Wie groß ist die Wahrscheinlichkeit, dass die gewürfelte Zahl eine 1 ist ? 
+		
+	\end{exEnv}
+	
+	
+	\subsection{Mehrstufige Zufallsexperimente}
+	Wenn mehrere Experimente m-Mal hintereinander ausgeführt werden, reden wir von mehrstufigen Zufallsexperimenten. Mögliche Ausgänge der i-ten Stufe werden als $\Omega_i$ bezeichnet.\\
+	Ein Ereignis ist ein m-Tupel mit $(\omega_1, \omega_2, ..., \omega_m) \in \Omega_1 \times ... \times \Omega_m$. Dabei ist $\omega_i$ das Ergebnis der i-ten Stufe.
+	
+	\subsubsection{Unabhängiger Ereignisraum}
+		Einfaches Multiplizieren aller Wahrscheinlichkeiten der einzelnen Ereignisse. 
+		\begin{align*}
+			P((\omega_1, \omega_2, ..., \omega_m)) = \prod_{i = 1}^{m} P(\omega_i)
+		\end{align*}
+		\begin{exEnv}
+			Wir betrachten ein \textbf{Zufallsexperiment} einer Urne, welche rote und blaue Kugeln enthält. Es werden zwei Kugeln nacheinander gezogen. Die Kugeln werden \textbf{zurückgelegt}.
+		\end{exEnv}
+	\subsubsection{Abhängiger Ereignisraum}
+		Darstellung durch Baumdiagramm ist einleuchtender, Formel ist sehr sperrig.
+		\begin{align*}
+			P((\omega_1, \omega_2, ..., \omega_m)) = P(\omega_1) \cdot P(\omega_2 | \omega_1) \cdot P(\omega_3 | \omega_1, \omega_2) \cdot ... \cdot P(\omega_m | \omega_1, ... \omega_{m-1})
+		\end{align*}	
+		\begin{exEnv}
+			Wir betrachten ein \textbf{Zufallsexperiment} einer Urne, welche rote und blaue Kugeln enthält. Es werden zwei Kugeln nacheinander gezogen. Die Kugeln werden \textbf{nicht} zurückgelegt.\\
+			Nach dem ersten Zug verändert sich der \textbf{Ergebnisraum}, da eine rote oder blaue Kugel weniger in der Urne liegen. Dadurch ändern sich die Wahrscheinlichkeiten in \textbf{diesem} Zufallsexperiment ebenfalls.
+		\end{exEnv}
+
+\section{Zufallsvariablen}
+	Annahmen: Der Ereignisraum $\Omega$ ist unendlich. ($|\Omega| = \infty$)
+	\subsection{Verteilungsfunktion}
+		Eine \textbf{Zufallsvariable} ist eine \textbf{Abbildung} $X: \Omega \rightarrow \mathbb{R}$. Wenn das Tupel $(\Omega, P)$ ein \textbf{Wahrscheinlichkeitsraum} ist, dann gibt es eine \textbf{Abbildung} $F: \mathbb{R} \rightarrow {[}0, 1{]}$, welche eine \textbf{Verteilungsfunktion} darstellt, welche definiert ist: 
+		\begin{align*}
+			F(x) &= P(\{\omega \in \Omega : X(\omega \leq x)\}) \\
+			&= P(X(\omega) < x)\\
+			&= P(X < x)
+		\end{align*}
+	\subsection{Wahrscheinlichkeitsverteilung}
+		Falls der \textbf{Wahrscheinlichkeitsraum }$\Omega$ endlich ist, dann können wir ein $Bild(X) \rightarrow {[}0, 1{]}$ definieren: $x_i \rightarrow P(X(\omega) = x_i)$. Diese Abbildung nennen wir \textbf{Wahrscheinlichkeitsverteilung}.
+		
+	\subsection{Bemerkungen}
+		Die Verteilungsfunktion F ist streng monoton wachsend und rechtseitig stetig.
+		\\
+		Ist X eine Zufallsvariable mit einer Verteilungsfunktion F, so sagen wir, dass X F-verteilt ist und schreiben $X F$.
+	\subsection{Formeln}
+		\begin{align*}
+			F: \mathbb{R} \rightarrow {[}0, 1{]} \text{ mit } F(x) &= P(\{\omega \in \Omega : X(\omega \leq x)\}) \\
+			&= P(X(\omega) < x) \\
+			&= P(X < x)\\
+			P(x < X < y) &= F(y) - F(x)\\
+			F(x) &= \sum_{\omega: X(\omega \leq x) } P(\omega)
+		\end{align*}
+	\subsection{Verschiedene Verteilungen}
+		\subsubsection{Gleichverteilung}	
+			Die Gleichverteilung ist die einfachste Verteilung. Jede Möglichkeit hat die gleiche Wahrscheinlichkeit. Ein Würfel ist gleichverteilt mit $P(x_i) = \frac{1}{6}$.\\
+			\begin{align*}
+				P(X = x_i) = \frac{1}{N}
+			\end{align*}
+			Dabei ist $N = |\Omega|$ und X eine Zufallsvariable, welche gleichverteilt ist.
+		\subsubsection{Binominialverteilung}
+			Ein \textbf{Bernoulli-Experiment} ist ein Experiment, welches nur \textbf{zwei} mögliche Ausgänge $A$ und $B$ hat. Eine \textbf{Binominialverteilung} ist eine Aneinanderreihung von Bernoulli-Experimenten. Dabei \textbf{muss} der Ereignisraum \textbf{unabhängig} sein. Ein Experiment kann beliebig oft, n-Mal, wiederholt werden.
+			\begin{align*}
+				X = B(n, p)\\
+				\Omega = \{A, B\}^n\\
+				P(A) = p\\
+				P(B) = 1 - p = q
+			\end{align*}
+			Es ist ein \textbf{LaPlace}-Experiment, wenn $p = q$ gilt.
+			\begin{align*}
+				P(X = k) = {n \choose k} \cdot p^k \cdot (1-p)^{n-k}
+			\end{align*}
+		\subsubsection{Poisson-Verteilung}
+			Die Poisson-Verteilung eignet sich für seltene Ereignisse in einem fest definierten Zeitraum.
+			\begin{align*}
+				X = P(\lambda)\\
+				\Omega = \{x \in \mathbb{R} | x \geq 0\}\\
+				P(X = k) = \frac{\lambda^k \cdot e^{-\lambda}}{k!}	
+			\end{align*}
+			Die Poisson-Verteilung kann, wenn $n \ge 50$ und $p \leq 0.1$, eine Binominialverteilung annähren.
+			\begin{align*}
+				X = B(n, p) \\
+				\lambda = n \cdot p \\\\
+				 P(X = k) \sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}	
+			\end{align*}
+		\subsubsection{Hypergeometrische Verteilung}
+			Wir betrachten ein Zufallsexperiment ohne Zurücklegen. Es gilt:
+			\begin{align*}
+				X &= H(n, M, N) \\
+				n &= \text{Anzahl der Züge}\\
+				N &= \text{Anzahl der Kugeln/Autos/Steine/...}\\
+				M &= \text{Anzahl der gesuchten Kugeln/Flugzeuge/Hölzer/...}\\
+				P(X = k) &= \frac{ {M \choose k} \cdot {M-N \choose n-k}}{ {N \choose n}} 
+			\end{align*}
+		
+	\section{Lagemaße}	
+		\subsection{Erwartungswert}
+			Der Erwartungswert ist der Wert, welcher ein Zufallsexperiment bei unendlicher Wiederholung annimmt. Wir betrachten alle Realisierungen $x_1, x_2, ... , x_n$ einer Zufallsgröße X.
+			\begin{align*}
+				E(X) = \sum_{i = 1}^{\infty} x_i \cdot P(X = x_i) = \mu				
+			\end{align*}
+		\subsection{Varianz}
+			Die Varianz berechnet sich folgend:
+			\begin{align*}
+				V(X) = E((X-\mu)^2)
+			\end{align*}
+			Wir können ebenfalls wieder alle Realisierungen von $x_1, x_2, ...$  betrachten und dann folgende Formel aufstellen:
+			\begin{align*}
+				V(X) = \sum_{i = 1}^{\infty} (x_i - \mu)^2 \cdot P(X=x_i)
+			\end{align*}
+		\subsection{Standardabweichung}
+			Die Standardabweichung einer Zufallsvariable $X$ ist die Wurzel der Varianz.
+			\begin{align*}
+				S(X) = \sqrt{V(X)}
+			\end{align*}
+		\subsection{Rechenregeln}
+		TODO
+\section{Statistik}	
+	\section{Stichproben}
+		Stichproben werden aus großen Mengen gezogen. Bei kleinen Veränderungen des Ereignisraums $(\Omega)$ wird darüber hinweg gesehen.
+		\begin{align*}
+			n &= \text{Umfang der Strichprobe}\\
+			a_1, ..., a_n &= \text{Merkmale der Strichprobe}\\
+			h_1, ..., h_n &= \text{Anzahl der absoluten Häufigkeiten} 
+		\end{align*}
+		
+		\subsection{Empirischer Mittelwert}
+		\begin{align*}
+			\bar{x} = \frac{1}{n} \sum_{i = 1}^{n} h_i \cdot a_i
+		\end{align*}
+		\subsection{Empirische Varianz}
+		\begin{align*}
+			\bar{s_x}^2 = \frac{1}{n-1}\sum_{i = 1}^{n} (x_i - \bar{x})^2.
+		\end{align*}
+	\section{Stichprobe als Zufallsexperiment}
+		Wir können analog zur Stichprobe definieren:
+		\begin{align*}
+			n &= \text{Umfang der Stichprobe} \\
+			(\omega_1, \omega_2, ..., \omega_n) &\in \Omega^n	
+		\end{align*}
+		\subsection{Empirischer Mittelwert}
+			\begin{align*}
+			\bar{X} = \frac{1}{n} \sum_{i = 1}^{n} X_i
+			\end{align*}
+		\subsection{Empirische Varianz}
+			\begin{align*}
+			\bar{S_X}^2 = \frac{1}{n-1}\sum_{i = 1}^{n} (X_i - \bar{X})^2.
+			\end{align*}	
+				
+\section{Induktive Statistik}
+\section{Numerik}
+\section{Differenzialgleichungen}
+
+	
+\end{document}
