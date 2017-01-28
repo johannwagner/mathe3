@@ -1,0 +1,107 @@
+\documentclass[a4paper,landscape, 11pt]{article}
+
+\usepackage{multicol}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\geometry{
+    left=0.5cm,
+    right=0.5cm,
+    top=1cm,
+    bottom=1cm,
+    bindingoffset=5mm
+}
+
+\author{Johann Wagner, Kai Seidensticker}
+
+
+\newcommand{\limTo}[1]{ \lim\limits_{x \rightarrow #1}}
+\newcommand{\limFromTo}[2]{ \lim\limits_{#2 \rightarrow #1}}
+
+\newenvironment{alignTab}{$\begin{aligned}}{\end{aligned}$}
+
+\title{Mathe III - Klausurhilfe}
+
+\begin{document}
+    \begin{multicols}{4}
+        
+    
+    \begin{small}
+    \section{Allgemeines}
+        \subsection{Potenzgesetze}
+            \begin{multicols}{2}
+            $a^m \cdot a^n = a^{m+n}$\\
+            $a^n \cdot b^n = (ab)^n$\\
+            $\frac{a^n}{a^m} = a^{n-m}$\\
+            $\frac{a^n}{b^n} = \left(\frac{a}{b}\right)^n$\\
+            $(a^n)^m = a^{mn}$\\
+            $a^{-n} = \frac{1}{a^n}$\\
+            $log_b(1) = 0$
+            \end{multicols}
+         \subsection{Logarithmus-Gesetze}
+            \noindent
+            $x = log_a(y) \Leftrightarrow y = a^x$\\
+            $log(x) + log(y) = log(xy)$\\
+            $log(x) - log(y) = log(\frac{x}{y})$\\
+            $log_a(x) = \frac{log_b(x)}{log_b(a)}$  \\
+            $log(u^r) = r \cdot ln(u)$
+            \begin{multicols}{2}
+            \noindent
+            $ln(1) = 0$ \\
+            $ln(e) = 1$ \\
+            $ln(e^x) = x$ \\
+            $e^{ln(x)} = x$
+            \end{multicols}
+        \subsection{Komplexe Zahlen}
+        $(a + bi) \pm (c + di) = (a \pm c) + (c \pm d)i$\\
+        $(a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i$\\
+    
+        $\displaystyle \frac{a + bi}{c + di} = \frac{ac + bd}{c^2 + d^2} + \frac{cb - ad}{c^2 + d^2}i$
+    
+         
+    \section{Integralrechnung}
+        $e^{Foo}$ u.ä. muss vorher substituiert werden!\\
+        
+        $
+        \begin{matrix}
+        \text{Funktion} & \text{Aufleitung} \\
+        c & c \cdot x \\
+        x^a, a \neq -1 & \frac{x^{a+1}}{a+1}\\
+        x^{-1}, x \neq 0 & ln(|x|)\\
+        e^x & e^x \\
+        a^x & \frac{a^x}{ln(a)} \\
+        sin(x) & -cos(x)\\
+        cos(x) & sin(x)
+        \end{matrix}
+        $
+        
+        
+        \subsection{Partielle Integration}
+        Wenn $u$ und $v$ zwei differenzierbare Funktionen sind, dann gilt: \\
+        $\int u' * v = (u * v) - \int u * v'$
+        \subsection{Substitutionsregel}
+        $\int f(g(x)) * g'(x) dx = \int f(y) dy$
+        \begin{align}
+            \int \frac{1}{5x - 7} dx &= ?\\
+            z &= 5x - 7 \\
+            \frac{dz}{dx} &= 5 \\   
+            \frac{dz}{5} &= dx  \\
+            \int \frac{1 * dz}{z * 5} &= \frac{1}{5} \int \frac{1}{z} dz \\
+                                      &= \frac{1}{5} ln(z) \\
+                                      &= \frac{1}{5} ln(5x-7)
+        \end{align}
+	\section{Numerik}
+		\subsection{Lagrange'sches Interpolationspolynom}
+			\begin{align*}
+			n &= \text{Anzahl der Stützstellen}\\
+			p(x) &= \sum_{i=0}^{n} y_i \cdot L_i(x) \\
+			L_i(x) &= \prod_{j = 0, j \neq i}^{n} \frac{x - x_j}{x_i - x_j}
+			\end{align*}
+\end{small}
+\end{multicols}
+\end{document}
