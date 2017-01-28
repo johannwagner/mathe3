@@ -102,6 +102,74 @@
 			p(x) &= \sum_{i=0}^{n} y_i \cdot L_i(x) \\
 			L_i(x) &= \prod_{j = 0, j \neq i}^{n} \frac{x - x_j}{x_i - x_j}
 			\end{align*}
+		\subsection{Newton'sches Interpolationspolynom}
+			\begin{align*}
+			n &= \text{Anzahl der Stützstellen}\\
+			p(x) &= a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + a_n(x-x_0)&(x - x_1)\cdot ... \cdot (x - x_n)\\
+			&\text{Auflösen nach $a$ für die einzelnen Faktoren}\\
+			y_0 &= a_0\\
+			y_1 &= a_0 + a_1(x_1 - x_0)	\\
+			y_2 &= a_0 + a_1(x_1 - x_0) + a_2(x_2 - x_0)(x_1 - x_0)
+			\end{align*}
+		\subsection{QR-Zerlegung}
+			Seien $A \in \mathbb{R}^{mxn}$ mit $m \ge n$ und $rg(A) = n$.\\
+			 Es seien $a_1, a_2, ..., a_n \in \mathbb{R}^m$ die Spaltenvektoren von $A$. \\
+			 Die Vektoren $u_1, u_2, ..., u_n \in \mathbb{R}^m$ sind die Gram-Schmidt orthogonalisierten Vektoren.
+			 
+			 \begin{align*}
+			 	u_1 &= \frac{1}{|a_1|} a_1\\
+			 	u_i' &= a_i - \sum_{j = 1}^{i-1} <u_j, a_i> \cdot u_j\\
+			 	u_i &= \frac{u_i'}{|u_i'|}
+			 	\\\\
+			 	Q &= (u_1, u_2, ..., u_n)\\
+			 	Q^{-1}\cdot A &= R \\
+			 	\end{align*}
+		\subsection{LU-Zerlegung}
+			Sei $A \in \mathbb{R}^{mxn}$. Wir initialisieren drei Matrizen: $P = L = I_m$ und $A = U$.\\
+			Zeilenvertauschungen werden über die $P$-Matrix realisiert. \\
+			Jede Operation, welche im Gauß gemacht wird, wird auf der $L$-Matrix mit gedrehtem Vorzeichen gemacht.\\
+			Am Ende gilt, dass $PLU = A$.
+			\subsubsection{Lösung von PLUx = b}
+				Wir berechnen zunächst ein y, welches ein Zwischenergebnis ist. Die Schritte sind sehr einfach, da L und U Dreiecksmatrizen sind.
+				\begin{align*}
+					Ly &= P^Tb \text{ mit } P^T = P^{-1}\\
+					Ux &= y
+				\end{align*}
+		\subsection{Cholesky-Zerlegung}
+			Eine symmetrische Matrix ist die Voraussetzung für eine Cholesky-Zerlegung.
+			Wir wollen eine Matrix $L$ finden, für die gilt, dass $A = L \cdot L^{T}$. L sollte dabei eine Dreiecksmatrix sein, damit gilt, dass $L^T = L^{-1}$
+			
+			\textbf{TODO: Beispiel einfügen}
+			
+	\section{Differentialgleichungen}
+		\subsection{DGL 1. Ordnung}	
+			\subsubsection{Variation der Konstanten}
+				\begin{itemize}
+					\item Alle Ableitungen $y'$ umformen: \\
+						  $y' = \frac{dy}{dx}$
+					\item Umstellen durch Integration und $e^{ln(x)}$-Trick nach $y$
+				\end{itemize}
+			\subsection{Anfangswertproblem}
+				Wir haben unsere aufgelöste DGL: $y = C_1 \cdot ...$
+				Beim AWP haben wir eine Zusatzbedingung, die ähnlich zu $y(0) = 2$ ist. AWP löst sich, indem wir einsetzen und zur Konstante umformen.
+		\subsection{DGL 2. Ordnung}	
+			Eine DGL kann eine Störfunktion enthalten. Störfunktionen sind für den inhomogenen Teil der Lösung verantwortlich. Jeder Teil, welcher nicht abhängig von $y^{(n)}$ ist, ist eine Störfunktion. $y(t) = y_h(t) + y_p(t)$
+			\subsubsection{Charakteristisches Polynom}
+				Umformen der Ableitungen: $y^{(n)} = \lambda^n$
+				Anschließend werden die Lösungen für $\lambda$ bestimmt.
+				\begin{align*}
+					\text{Einfache Nullstelle:}\\
+					e^{\lambda \cdot x}\\
+					\text{k-fache Nullstelle:}\\
+					x^{k-1} e^{\lambda x}\\
+					\text{Komplexe Nullstelle:}\\
+					(a \pm bi) \rightarrow e^{ax} \cdot sin(b), e^{ax} \cdot cos(b)
+				\end{align*}
+				Bsp.: $y_h(t) = C_1 \cdot e^{2x} + C_2 \cdot e^{4x}$\\
+				Bei inhomogenen DGL muss ein Ansatz gefunden werden, der zur Lösung führt, wenn man ihn samt Ableitungen in die ursprüngliche DGL einsetzt.\\
+				
+				\textbf{TODO: Beispiel}
+				
 \end{small}
 \end{multicols}
 \end{document}
