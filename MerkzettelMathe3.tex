@@ -1,9 +1,11 @@
-\documentclass[a4paper,landscape, 11pt]{article}
+\documentclass[a4paper, 11pt]{article}
 
 \usepackage{multicol}
 
-\usepackage[english]{babel}
+\usepackage[german,ngerman]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
@@ -16,8 +18,8 @@
     bottom=1cm,
     bindingoffset=5mm
 }
-
-\author{Johann Wagner, Kai Seidensticker}
+%\setlength{\columnseprule}{0.4pt}
+\author{Johann Wagner}
 
 
 \newcommand{\limTo}[1]{ \lim\limits_{x \rightarrow #1}}
@@ -28,7 +30,7 @@
 \title{Mathe III - Klausurhilfe}
 
 \begin{document}
-    \begin{multicols}{4}
+    \begin{multicols}{3}
         
     
     \begin{small}
@@ -79,14 +81,12 @@
         cos(x) & sin(x)
         \end{matrix}
         $
-        
-        
         \subsection{Partielle Integration}
         Wenn $u$ und $v$ zwei differenzierbare Funktionen sind, dann gilt: \\
         $\int u' * v = (u * v) - \int u * v'$
         \subsection{Substitutionsregel}
         $\int f(g(x)) * g'(x) dx = \int f(y) dy$
-        \begin{align}
+        \begin{align*}
             \int \frac{1}{5x - 7} dx &= ?\\
             z &= 5x - 7 \\
             \frac{dz}{dx} &= 5 \\   
@@ -94,7 +94,94 @@
             \int \frac{1 * dz}{z * 5} &= \frac{1}{5} \int \frac{1}{z} dz \\
                                       &= \frac{1}{5} ln(z) \\
                                       &= \frac{1}{5} ln(5x-7)
-        \end{align}
+        \end{align*}
+    \section{Stochastik}
+    	$\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
+    	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
+    	$P: \Omega \rightarrow \mathbb{R}$ ist eine Abbildung, welche jedem Ereignis eine Wahrscheinlichkeit zuordnet.\\
+    	Eine Wahrscheinlichkeitsverteilung listet alle möglichen Ausgänge des Zufallsexperiments und ihre Wahrscheinlichkeiten auf.
+    	\subsection{Gesetze/Axiome/...}
+	    	\begin{align*}
+	    	P(A) &> 0 \text{ für alle } A \subset \Omega\\
+	    	P(\Omega) &= 1\\
+	    	P(A_1 \cap A_2) &= P(A_1) \cdot P(A_2), A_1 \cap A_2 = \emptyset \\
+	    	P(A_1 \cup A_2) &= P(A_1) + P(A_2), A_1 \cap A_2 = \emptyset \\
+	    	P(\Omega \backslash A) &= 1 - P(A)\\
+	    	P(\emptyset) &= 0\\
+	    	A \subseteq B &\iff P(A) \leq P(B) \\
+	    	P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
+	    	P(A\cap B) &= P(B) \cdot P(A|B)\\
+	    	&= P(A) \cdot P(B|A)\\
+	    	P_B(A) &= P(A|B)
+	    	\end{align*}
+	    
+	    \subsection{Dichtefunktion}
+	    	$w: \mathbb{R} \rightarrow \mathbb{R}$ ist eine integrierbare, nicht negative Funktion. \\
+	    	Es gilt: $\int_{-\infty}^{x} w(t) dt = F(x) = P(X \leq x)$
+	    \subsection{Verteilungsfunktion}
+	    	$F: \mathbb{R} \rightarrow \left[0,1\right]$ heißt Verteilungsfunktion.
+	    	F ist rechtsseitig stetig und es gilt:
+	    	\begin{align*}
+	    		\limFromTo{-\infty}{x} F(x) &= 0\\
+	    		\limFromTo{\infty}{x} F(x) &= 1\\
+	    		P(X \geq x) &= 1 - P(X \leq x) \\
+	    					&= \int_{x}^{\infty} w(t)dt\\
+	    		P(a \le X \le b) &= P(X \le b) - P(X \le a)\\
+	    						 &= F(b) - F(a) \\
+	    						 &= \int_{a}^{b} w(t)dt
+	    	\end{align*}
+	    \subsection{Formeln}
+		    \begin{align*}
+		    	E(X) &= \sum_{x \in X(\Omega)} x \cdot P(X = x)\\
+		    	E(X) &= \int_{-\infty}^{\infty} x \cdot w(x) dx\\
+		    	V(X) &= \sum_{x \in X(\Omega)} (x - E(X))^2 \cdot P(X = x)\\
+		    		 &= \left(\sum_{x \in X(\Omega)} x^2 \cdot P(X = x)\right) - E(X)^2\\
+		    	V(X) &= \int_{-\infty}^{\infty} (x - E(X))^2 \cdot w(x) dx\\
+		    		 &= \left(\int_{-\infty}^{\infty} x^2 w(x) dx \right) - E(X)^2	 
+		    \end{align*}
+	    \subsection{Verschiedene Verteilungen}
+		   \subsubsection{Gleichverteilung}	
+			   Die Gleichverteilung ist die einfachste Verteilung. Jede Möglichkeit hat die gleiche Wahrscheinlichkeit. Ein Würfel ist gleichverteilt mit $P(x_i) = \frac{1}{6}$.\\
+			   \begin{align*}
+			   P(X = x_i) = \frac{1}{N}
+			   \end{align*}
+			   Dabei ist $N = |\Omega|$ und X eine Zufallsvariable, welche gleichverteilt ist.
+	    	\subsubsection{Binominialverteilung}
+			    Ein \textbf{Bernoulli-Experiment} ist ein Experiment, welches nur \textbf{zwei} mögliche Ausgänge $A$ und $B$ hat. Eine \textbf{Binominialverteilung} ist eine Aneinanderreihung von Bernoulli-Experimenten. Dabei \textbf{muss} der Ereignisraum \textbf{unabhängig} sein. Ein Experiment kann beliebig oft, n-Mal, wiederholt werden.
+				    \begin{align*}
+				    X = B(n, p)\\
+				    \Omega = \{A, B\}^n\\
+				    P(A) = p\\
+				    P(B) = 1 - p = q
+				    \end{align*}
+	    		Es ist ein \textbf{LaPlace}-Experiment, wenn $p = q$ gilt.
+			    \begin{align*}
+			    P(X = k) &= {n \choose k} \cdot p^k \cdot (1-p)^{n-k}\\
+			    {n \choose k} &= \frac{n!}{k! (n-k)!}
+			    \end{align*}
+		    \subsubsection{Poisson-Verteilung}
+		    Die Poisson-Verteilung eignet sich für seltene Ereignisse in einem fest definierten Zeitraum.
+			    \begin{align*}
+			    X = P(\lambda)\\
+			    \Omega = \{x \in \mathbb{R} | x \geq 0\}\\
+			    P(X = k) = \frac{\lambda^k \cdot e^{-\lambda}}{k!}	
+			    \end{align*}
+		    Die Poisson-Verteilung kann, wenn $n \ge 50$ und $p \leq 0.1$, eine Binominialverteilung annähren.
+			    \begin{align*}
+			    X = B(n, p) \\
+			    \lambda = n \cdot p \\\\
+			    P(X = k) \sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}	
+			    \end{align*}
+	    	\subsection{Normalverteilung}
+	    	$N(\mu, \sigma^2)$ ist eine Normalverteilung. Für $\mu = 1$ und $\sigma = 1$ ist es eine Standardnormalverteilung.
+	    	\begin{align*}
+	    		w(x) &= \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\\
+	    		E(X) &= \mu\\
+	    		V(X) &= \sigma^2
+	    	\end{align*}
+	    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
+	    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
+	    	$X_P$ ist possionverteilt. Wenn $\lambda \ge 9$, dann $F_P(x) \sim \Phi\left(\frac{x + 0.5 - \lambda}{\sqrt{\lambda}}\right)$.
 	\section{Numerik}
 		\subsection{Lagrange'sches Interpolationspolynom}
 			\begin{align*}
@@ -105,8 +192,11 @@
 		\subsection{Newton'sches Interpolationspolynom}
 			\begin{align*}
 			n &= \text{Anzahl der Stützstellen}\\
-			p(x) &= a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + a_n(x-x_0)&(x - x_1)\cdot ... \cdot (x - x_n)\\
-			&\text{Auflösen nach $a$ für die einzelnen Faktoren}\\
+			p(x) &= a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1)\\
+			     &+ a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_n)
+			\end{align*}
+			     Auflösen nach $a$ für die einzelnen Faktoren:
+			\begin{align*}
 			y_0 &= a_0\\
 			y_1 &= a_0 + a_1(x_1 - x_0)	\\
 			y_2 &= a_0 + a_1(x_1 - x_0) + a_2(x_2 - x_0)(x_1 - x_0)
@@ -122,7 +212,7 @@
 			 	u_i &= \frac{u_i'}{|u_i'|}
 			 	\\\\
 			 	Q &= (u_1, u_2, ..., u_n)\\
-			 	Q^{-1}\cdot A &= R \\
+			 	Q^{-1}\cdot A &= R 
 			 	\end{align*}
 		\subsection{LU-Zerlegung}
 			Sei $A \in \mathbb{R}^{mxn}$. Wir initialisieren drei Matrizen: $P = L = I_m$ und $A = U$.\\
