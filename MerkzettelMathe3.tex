@@ -15,13 +15,23 @@
     left=0.5cm,
     right=0.5cm,
     top=1cm,
-    bottom=1cm,
+    bottom=0.5cm,
     bindingoffset=5mm
 }
 %\setlength{\columnseprule}{0.4pt}
 \author{Johann Wagner}
 
+%\pagestyle{fancy}
 
+\lhead{Mathe 3 - Klausur Pott}
+\rhead{\thepage}
+\cfoot{Johann Wagner}
+\rfoot{\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\newcommand{\bspVec}{\ensuremath{\begin{pmatrix} x_1\\ \vdots \\ x_n \end{pmatrix}}}
 \newcommand{\limTo}[1]{ \lim\limits_{x \rightarrow #1}}
 \newcommand{\limFromTo}[2]{ \lim\limits_{#2 \rightarrow #1}}
 
@@ -230,7 +240,15 @@
 			Wir wollen eine Matrix $L$ finden, für die gilt, dass $A = L \cdot L^{T}$. L sollte dabei eine Dreiecksmatrix sein, damit gilt, dass $L^T = L^{-1}$
 			
 			\textbf{TODO: Beispiel einfügen}
-			
+		\subsection{Matrixnormen}
+			\begin{align*}
+				\left|\bspVec\right| &= \sqrt{x_1^2 + ... + x_n^2}\\
+				\left|\bspVec\right|_1 &= \sum_{i = 1}^{n} x_i\\
+				\left|\bspVec\right|_\infty &= \max_{1 \le i \le n} x_i\\
+				A &\in R^{n \times n}\\
+				\left|A\right|_1 = \max_{1 \le j \le n} &\sum_{i = 1}^{n} a_{ij} \text{ Spaltens.} \\
+				\left|A\right|_1 = \max_{1 \le i \le n} &\sum_{j = 1}^{n} a_{ij} \text{ Zeilens.} 
+			\end{align*}
 	\section{Differentialgleichungen}
 		\subsection{DGL 1. Ordnung}	
 			\subsubsection{Variation der Konstanten}
@@ -257,9 +275,10 @@
 				\end{align*}
 				Bsp.: $y_h(t) = C_1 \cdot e^{2x} + C_2 \cdot e^{4x}$\\
 				Bei inhomogenen DGL muss ein Ansatz gefunden werden, der zur Lösung führt, wenn man ihn samt Ableitungen in die ursprüngliche DGL einsetzt.\\
-				
-				\textbf{TODO: Beispiel}
-				
+				\\
+				1. Aufstellen des Ansatzes für $y = \{ \text{Ansatz} \}$\\
+				2. Ableiten und Einsetzen als homogenen Teil der DGL.\\
+				3. Parameter des Ansatzes ausrechnen und als $y_p$ angeben.
 \end{small}
 \end{multicols}
 \end{document}
