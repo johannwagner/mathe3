@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper, landscape, 10pt]{article}
 
 \usepackage{multicol}
 
@@ -19,7 +19,7 @@
     bindingoffset=5mm
 }
 %\setlength{\columnseprule}{0.4pt}
-\author{Johann Wagner}
+\author{Johann Wagner, Jasper Orschulko}
 
 %\pagestyle{fancy}
 
@@ -40,11 +40,15 @@
 \title{Mathe III - Klausurhilfe}
 
 \begin{document}
-    \begin{multicols}{3}
+    \begin{multicols}{4}
         
     
     \begin{small}
     \section{Allgemeines}
+	    \subsection{Binomische Formeln}
+		    $(a+b)^{2}=a^{2}+2ab+b^{2}$\\
+		    $(a-b)^{2}=a^{2}-2ab+b^{2}$\\
+		    $(a+b)\cdot(a-b)=a^{2}-b^{2}$
         \subsection{Potenzgesetze}
             \begin{multicols}{2}
             $a^m \cdot a^n = a^{m+n}$\\
@@ -74,8 +78,17 @@
         $(a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i$\\
     
         $\displaystyle \frac{a + bi}{c + di} = \frac{ac + bd}{c^2 + d^2} + \frac{cb - ad}{c^2 + d^2}i$
-    
-         
+	    \subsection{Sin-Cos-Tan Tabelle}
+	    \begin{multicols}{2}
+	    \begin{tabular}{l | c  c  c  c  c  c  c  c  c  c }
+    	\noindent
+    	$x$ & $0$ & $\frac{1}{6}\pi$ & $\frac{1}{4}\pi$ & $\frac{1}{3}\pi$ & $\frac{1}{2}\pi$ & $\frac{2}{3}\pi$ & $\frac{3}{4}\pi$ & $\frac{5}{6}\pi$ & $\pi$ & $\frac{7}{6}\pi$\\\hline
+    	$Grad$ & $0$ & $30$ & $45$ & $60$ & $90$ & $120$ & $135$ & $150$ & $180$ & $210$\\\hline
+    	$\sin$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$\\\hline
+    	$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$ & $-\frac{\sqrt{2}}{2}$ & $-\frac{\sqrt{3}}{2}$ & $-1$ & $-\frac{\sqrt{3}}{2}$\\\hline
+    	$\tan$ & $0$ & $\frac{\sqrt{3}}{3}$ & $1$ & $\sqrt{3}$ &$\pm\infty$ & $-\sqrt{3}$ & $-1$ & $-\frac{\sqrt{3}}{3}$ & $0$ & $\frac{\sqrt{3}}{3}$
+    	\end{tabular}
+        \end{multicols}
     \section{Integralrechnung}
         $e^{Foo}$ u.ä. muss vorher substituiert werden!\\
         
@@ -105,6 +118,27 @@
                                       &= \frac{1}{5} ln(z) \\
                                       &= \frac{1}{5} ln(5x-7)
         \end{align*}
+    \section{Ableitung}
+		\subsection{typische Ableitungen}
+			\begin{multicols}{2}		
+				$(x)' = 1$ \\
+				$(ax)' = a$ \\
+				$(ax^2)' = 2ax$ \\
+				$(\frac{1}{x})' = -\frac{1}{x^2}$ \\
+				$(\sqrt[]{x})' = \frac{1}{2\sqrt[]{x}}$ \\
+				$(ax^b)' = abx^(b-1)$ \\
+				$(e^x)' = e^x $ \\
+				$(a^x)' = a^x*log(a) $ \\
+				$ln(x)' = \frac{1}{x}$ \\
+				$(\sin x) = \cos x$ \\
+				$(\cos x) = -\sin x$ \\
+				$(\tan x) = \frac{1}{(\cos x)^2}$ \\ 
+			\end{multicols}
+		\subsection{Verknüpfungsfunktionen}
+			Summenregel: $(f(x) + g(x))' = f(x)' + g(x)' $ \\ 
+			Produktregel: $(f(x)g(x))' = f(x)'g(x)+g(x)'f(x) $ \\
+			Quotientenregel: $(\frac{f(x)}{g(x)})' = \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2}$ \\
+			Kettenregel: $(f(g(x)))' = f(g(x))'g(x)'$ \\
     \section{Stochastik}
     	$\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
     	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
@@ -154,8 +188,8 @@
 		    Sortieren, $n\cdot p$, Einsetzen \& Index suchen, Formel anwenden:\\
 			$\widetilde{X}_p=
 			\begin{cases}
-			\frac{1}{2}(x_{np}+x_{np+1}) & \text{falls } n \text{ ganzzahl.}\\
-			x_{\lceil{np}\rceil} & \text{falls } n \text{ nicht ganzzahl.}
+			\frac{1}{2}(x_{np}+x_{np+1}) & \text{falls } n \text{ ganzz.}\\
+			x_{\lceil{np}\rceil} & \text{falls } n \text{ nicht ganzz.}
 			\end{cases}$
 			
 	    \subsection{Verschiedene Verteilungen}
@@ -201,9 +235,10 @@
 	    	$N(\mu, \sigma^2)$ ist eine Normalverteilung. Für $\mu = 1$ und $\sigma = 1$ ist es eine Standardnormalverteilung.
 	    	\begin{align*}
 	    		w(x) &= \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\\
-	    		E(X) &= \mu\\
-	    		V(X) &= \sigma^2
+	    		P(a\le x\le b)&= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})
 	    	\end{align*}
+	    	\text{Für $\Phi$ siehe Standardnormalverteilungstabelle.}\\
+	    	
 	    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
 	    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
 	    	$X_P$ ist possionverteilt. Wenn $\lambda \ge 9$, dann $F_P(x) \sim \Phi\left(\frac{x + 0.5 - \lambda}{\sqrt{\lambda}}\right)$.
@@ -213,7 +248,9 @@
 	    		&  $E(x)$ & $V(x)$\\ \hline
 	    		$B(n,p)$ & $n\cdot$p & $n\cdotp(1-p)$\\ \hline
 	    		$H(n,M,N)$ & $n\cdot\frac{M}{N}$ & $n\cdot\frac{M}{N}(1-\frac{M}{N})\frac{N-n}{N-1}$\\ \hline
-	    		$P(\lambda)$ & $\lambda$ & $\lambda$
+	    		$P(\lambda)$ & $\lambda$ & $\lambda$\\
+		    	\hline
+	    		$N(x)$ & $\mu$ & $\sigma^2$
 	    	\end{tabular}
 	    	
 	\section{Numerik}
