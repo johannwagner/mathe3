@@ -1,7 +1,6 @@
 \documentclass[a4paper, landscape, 10pt]{article}
 
 \usepackage{multicol}
-
 \usepackage[german,ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -11,6 +10,13 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{geometry}
+\usepackage{mathptmx}
+\usepackage{paralist}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titlespacing{\subsection}{0pt}{1ex}{0ex}
+\titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
+\setlength\parindent{0pt}
 \geometry{
     left=0.5cm,
     right=0.5cm,
@@ -25,7 +31,7 @@
 
 \lhead{Mathe 3 - Klausur Pott}
 \rhead{\thepage}
-\cfoot{Johann Wagner}
+\cfoot{Johann Wagner, Jasper Orschulko}
 \rfoot{\thepage}
 
 \renewcommand{\headrulewidth}{0.4pt}
@@ -40,15 +46,17 @@
 \title{Mathe III - Klausurhilfe}
 
 \begin{document}
-    \begin{multicols}{4}
+    \begin{multicols}{5}
         
     
     \begin{small}
     \section{Allgemeines}
 	    \subsection{Binomische Formeln}
-		    $(a+b)^{2}=a^{2}+2ab+b^{2}$\\
-		    $(a-b)^{2}=a^{2}-2ab+b^{2}$\\
-		    $(a+b)\cdot(a-b)=a^{2}-b^{2}$
+		    \begin{align*}
+		    (a+b)^{2} &= a^{2}+2ab+b^{2}\\
+		    (a-b)^{2} &= a^{2}-2ab+b^{2}\\
+		    a^{2}-b^{2} &= (a+b)\cdot(a-b)
+		    \end{align*}
         \subsection{Potenzgesetze}
             \begin{multicols}{2}
             $a^m \cdot a^n = a^{m+n}$\\
@@ -106,15 +114,15 @@
         $
         \subsection{Partielle Integration}
         Wenn $u$ und $v$ zwei differenzierbare Funktionen sind, dann gilt: \\
-        $\int u' * v = (u * v) - \int u * v'$
+        $\int u' \cdot v = (u \cdot v) - \int u \cdot v'$
         \subsection{Substitutionsregel}
-        $\int f(g(x)) * g'(x) dx = \int f(y) dy$
+        $\int f(g(x)) \cdot g'(x) dx = \int f(y) dy$
         \begin{align*}
             \int \frac{1}{5x - 7} dx &= ?\\
             z &= 5x - 7 \\
             \frac{dz}{dx} &= 5 \\   
             \frac{dz}{5} &= dx  \\
-            \int \frac{1 * dz}{z * 5} &= \frac{1}{5} \int \frac{1}{z} dz \\
+            \int \frac{1 \cdot dz}{z \cdot 5} &= \frac{1}{5} \int \frac{1}{z} dz \\
                                       &= \frac{1}{5} ln(z) \\
                                       &= \frac{1}{5} ln(5x-7)
         \end{align*}
@@ -135,10 +143,12 @@
 				$(\tan x) = \frac{1}{(\cos x)^2}$ \\ 
 			\end{multicols}
 		\subsection{Verknüpfungsfunktionen}
-			Summenregel: $(f(x) + g(x))' = f(x)' + g(x)' $ \\ 
-			Produktregel: $(f(x)g(x))' = f(x)'g(x)+g(x)'f(x) $ \\
-			Quotientenregel: $(\frac{f(x)}{g(x)})' = \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2}$ \\
-			Kettenregel: $(f(g(x)))' = f(g(x))'g(x)'$ \\
+			\begin{align*}
+			Summenregel:\\ (f(x) + g(x))' &= f(x)' + g(x)'  \\ 
+			Produktregel:\\ (f(x)g(x))' &= f(x)'g(x)+g(x)'f(x)  \\
+			Quotientenregel:\\ (\frac{f(x)}{g(x)})' &= \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2} \\
+			Kettenregel:\\ (f(g(x)))' &= f(g(x))'g(x)' \\
+			\end{align*}
     \section{Stochastik}
     	$\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
     	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
@@ -154,6 +164,7 @@
 	    	P(\emptyset) &= 0\\
 	    	A \subseteq B &\iff P(A) \leq P(B) \\
 	    	P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
+	    	&= \frac{P(B|A)\cdot P(A)}{P(B)} \\
 	    	P(A\cap B) &= P(B) \cdot P(A|B)\\
 	    	&= P(A) \cdot P(B|A)\\
 	    	P_B(A) &= P(A|B)
@@ -237,7 +248,7 @@
 	    		w(x) &= \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\\
 	    		P(a\le x\le b)&= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})
 	    	\end{align*}
-	    	\text{Für $\Phi$ siehe Standardnormalverteilungstabelle.}\\
+	    	\text{Für $\Phi$ siehe Standardnormalverteilungstab.}\\
 	    	
 	    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
 	    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
@@ -272,6 +283,24 @@
 			y_1 &= a_0 + a_1(x_1 - x_0)	\\
 			y_2 &= a_0 + a_1(x_2 - x_0) + a_2(x_2 - x_0)(x_2 - x_1)
 			\end{align*}
+	    \subsection{Newton-Cotes-Formeln}
+		    
+			a = untere Grenze\\
+			b = obere Grenze\\
+			$\alpha_{i,n}$ Tabelle:\\
+			\begin{tabular}{l | c c c c }
+				\noindent
+				n & $i=0$ & $i=1$ & $i=2$ & $i=3$ \\\hline
+				1 & $1/2$ & $1/2$ & & \\
+				2 & $1/3$ & $4/3$ & $1/3$ & \\
+				3 & $3/8$ & $9/8$ & $9/8$ & $3/8$
+			\end{tabular}
+			\begin{align*}
+		        h &= \frac{b-a}{n}\\
+		        x_i &= a+i\cdot h\\
+		        p_{n}(x) &= h\cdot \sum_{i=0}^{n}\alpha_{i,n}\cdot f(x_{i})
+			\end{align*}
+
 		\subsection{QR-Zerlegung}
 			Seien $A \in \mathbb{R}^{mxn}$ mit $m \ge n$ und $rg(A) = n$.\\
 			 Es seien $a_1, a_2, ..., a_n \in \mathbb{R}^m$ die Spaltenvektoren von $A$. \\
@@ -286,13 +315,28 @@
 			 	Q^{-1}\cdot A &= R 
 			 	\end{align*}
 		\subsection{LU-Zerlegung}
-			Sei $A \in \mathbb{R}^{mxn}$. Wir initialisieren drei Matrizen: $P = L = I_m$ und $A = U$.\\
-			Zeilenvertauschungen werden über die $P$-Matrix realisiert. \\
-			Jede Operation, welche im Gauß gemacht wird, wird auf der $L$-Matrix mit gedrehtem Vorzeichen gemacht.\\
-			Am Ende gilt, dass $PLU = A$.
+			%Fancy shit: https://www.youtube.com/watch?v=Gn2euB6dBQA
+			L Matrizen sind Einheitsmatrizen plus:
+			\begin{compactitem}
+			\item[Step 1:] L1 Matrix aufbauen:\\
+			$x \in \{1,2\}$\\
+			$L_{x,1}=-\frac{A(x,1)}{A(1,1)}$ 
+			\item[Step 2:] $\tilde{A}=L1\cdot A$
+			\item[Step 3:] L2 Matrix aufbauen:\\
+			$L_{3,2}=-\frac{\tilde{A}(3,2)}{\tilde{A}(2,2)}$
+			\item[Step 4:] $U=L2\cdot\tilde{A}$
+			\item[Step 5:] $L=L_1^{-1}\cdot L_2^{-1}$ (=Vorzeichen außerhalb Diagonale ändern.) 	
+			\end{compactitem}
+			
+			%Sei $A \in \mathbb{R}^{m\cdot n}$. Wir initialisieren drei Matrizen: $P = L = I_m$ und $A = U$.\\
+			%Zeilenvertauschungen werden über die $P$-Matrix realisiert. \\
+			%Jede Operation, welche im Gauß gemacht wird, wird auf der $L$-Matrix mit gedrehtem Vorzeichen gemacht.\\
+			%Am Ende gilt, dass $PLU = A$.
 			\subsubsection{Lösung von PLUx = b}
 				Wir berechnen zunächst ein y, welches ein Zwischenergebnis ist. Die Schritte sind sehr einfach, da L und U Dreiecksmatrizen sind.
 				\begin{align*}
+					P  &= Einheitsmatrix\\
+					&\text{Lineares Gleichungssystem:}\\
 					Ly &= P^Tb \text{ mit } P^T = P^{-1}\\
 					Ux &= y
 				\end{align*}
@@ -310,7 +354,7 @@
 				\left|A\right|_1 = \max_{1 \le j \le n} &\sum_{i = 1}^{n} a_{ij} \text{ Spaltens.} \\
 				\left|A\right|_1 = \max_{1 \le i \le n} &\sum_{j = 1}^{n} a_{ij} \text{ Zeilens.} 
 			\end{align*}
-	\section{Differentialgleichungen}
+	\section{Differentialgleichung}
 		\subsection{DGL 1. Ordnung}	
 			\subsubsection{Variation der Konstanten}
 				\begin{itemize}
@@ -326,14 +370,14 @@
 			\subsubsection{Charakteristisches Polynom}
 				Umformen der Ableitungen: $y^{(n)} = \lambda^n$
 				Anschließend werden die Lösungen für $\lambda$ bestimmt.
-				\begin{align*}
-					\text{Einfache Nullstelle:}\\
-					e^{\lambda \cdot x}\\
-					\text{k-fache Nullstelle:}\\
-					x^{k-1} e^{\lambda x}\\
-					\text{Komplexe Nullstelle:}\\
-					(a \pm bi) \rightarrow e^{ax} \cdot sin(b), e^{ax} \cdot cos(b)
-				\end{align*}
+				
+					Einfache Nullstelle:\\
+					$e^{\lambda \cdot x}$\\
+					k-fache Nullstelle:\\
+					$x^{k-1} e^{\lambda x}$\\
+					Komplexe Nullstelle:\\
+					$(a \pm bi) \rightarrow e^{ax} \cdot sin(b), e^{ax} \cdot cos(b)$
+				
 				Bsp.: $y_h(t) = C_1 \cdot e^{2x} + C_2 \cdot e^{4x}$\\
 				Bei inhomogenen DGL muss ein Ansatz gefunden werden, der zur Lösung führt, wenn man ihn samt Ableitungen in die ursprüngliche DGL einsetzt.\\
 				\\
