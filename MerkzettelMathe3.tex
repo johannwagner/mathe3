@@ -225,7 +225,7 @@
 			    \end{align*}
 			
 			\subsubsection{Hypergeometrische Verteilung}
-			N = Grundmenge, n = Stichprobe, k = gewünscht, M = Defekte\\
+			N = Grundmenge, n = Stichprobe, k = gewünscht, M = gewünschte Eigenschaft\\
 			\begin{align*}
 			P(X = k) = \frac{{M \choose k} \cdot {N - M \choose n - k}}{{N \choose n}}
 			\end{align*}
@@ -248,7 +248,8 @@
 	    		w(x) &= \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\\
 	    		P(a\le x\le b)&= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})
 	    	\end{align*}
-	    	\text{Für $\Phi$ siehe Standardnormalverteilungstab.}\\
+	    	Für $\Phi$ siehe Standardnormalverteilungstabelle.\\
+	    	$\Phi(-x) = 1-\Phi(x)$\\
 	    	
 	    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
 	    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
@@ -257,12 +258,25 @@
 	    	\subsection{Tabelle Erwartungswert/Varianz}
 	    	\begin{tabular}{l|c|c}
 	    		&  $E(x)$ & $V(x)$\\ \hline
-	    		$B(n,p)$ & $n\cdot$p & $n\cdotp(1-p)$\\ \hline
-	    		$H(n,M,N)$ & $n\cdot\frac{M}{N}$ & $n\cdot\frac{M}{N}(1-\frac{M}{N})\frac{N-n}{N-1}$\\ \hline
-	    		$P(\lambda)$ & $\lambda$ & $\lambda$\\
-		    	\hline
+	    		$B(n,p)$ & $n\cdot p$ & $n\cdot p(1-p)$\\\hline
+	    		$H(n,M,N)$ & $n\cdot\frac{M}{N}$ & $n\cdot\frac{M}{N}(1-\frac{M}{N})\frac{N-n}{N-1}$\\\hline
+	    		$P(\lambda)$ & $\lambda$ & $\lambda$\\\hline
 	    		$N(x)$ & $\mu$ & $\sigma^2$
 	    	\end{tabular}
+    	
+    	\subsection{Konfidenzintervall}
+	    	$Vertrauensgrad=1-\alpha$
+	    	\subsubsection{Normalverteilung}
+		    $[\frac{k}{n}-z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}};\frac{k}{n}+z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}}]$\\
+		    z Werte in Normalverteilungstabelle nachschlagen. 
+	    	\subsubsection{T-Verteilung}
+	    	Keine Varianz gegeben. Stichprobe muss vorhanden sein.\\
+		    $\bar{x}=\text{arethmetisches Mittel}=\frac{\sum x}{n}$\\
+		    $\sigma=\sqrt{\frac{\sum(x-\bar{x})^{2}}{n-1}}$\\
+		    $[\bar{x}-t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}};\bar{x}+t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}}]$\\
+		    T Werte in T-Verteilungstabelle nachschlagen.
+		    
+		    	
 	    	
 	\section{Numerik}
 		\subsection{Lagrange'sches Interpolationspolynom}
@@ -283,6 +297,10 @@
 			y_1 &= a_0 + a_1(x_1 - x_0)	\\
 			y_2 &= a_0 + a_1(x_2 - x_0) + a_2(x_2 - x_0)(x_2 - x_1)
 			\end{align*}
+		\subsubsection{Newton-Verfahren für Nullstellen}
+			Voraussetzung: Muss stetig sein (hinschreiben!)\\
+			stetig = an jeder Stelle definiert\\
+			Allgemeine Formel: $x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}$ 
 	    \subsection{Newton-Cotes-Formeln}
 		    
 			a = untere Grenze\\
@@ -341,10 +359,33 @@
 					Ux &= y
 				\end{align*}
 		\subsection{Cholesky-Zerlegung}
-			Eine symmetrische Matrix ist die Voraussetzung für eine Cholesky-Zerlegung. Außerdem muss die Determinante jeder Teilmatrix > 0 sein.
-			Wir wollen eine Matrix $L$ finden, für die gilt, dass $A = L \cdot L^{T}$. L sollte dabei eine Dreiecksmatrix sein, damit gilt, dass $L^T = L^{-1}$
+			Voraussetzung: symmetrische Matrix \& Determinante jeder Teilmatrix > 0\\
+			$A=GG^{T}$\\
 			
-			\textbf{TODO: Beispiel einfügen}
+			\begin{tiny}
+			$A=\begin{pmatrix}
+			g_{11}^{2} & g_{11}g_{21} & g_{11}g_{31}\\
+			g_{11}g_{21} & g_{21}^{2}g_{22}^{2} & g_{21}g_{31}+g_{22}g_{32}\\
+			g_{11}g_{31} & g_{21}g_{31}+g_{22}g_{32} & g_{31}^{2}+g_{32}^{2}+g_{33}^{2}
+			\end{pmatrix}$
+			\begin{multicols}{2}
+				$G=\begin{pmatrix}
+					g_{11} & 0 & 0\\
+					g_{21} & g_{22} & 0\\
+					g_{31} & g_{32} & g_{33}
+				\end{pmatrix}$
+			$G^{T}=\begin{pmatrix}
+				g_{11} & g_{21} & g_{31}\\
+				0 & g_{22} & g_{32}\\
+				0 & 0 & g_{33}
+			\end{pmatrix}$
+			\end{multicols}
+			\end{tiny}
+		
+			
+			%Wir wollen eine Matrix $L$ finden, für die gilt, dass $A = L \cdot L^{T}$. L sollte dabei eine Dreiecksmatrix sein, damit gilt, dass $L^T = L^{-1}$
+			
+			%\textbf{TODO: Beispiel einfügen}
 		\subsection{Matrixnormen}
 			\begin{align*}
 				\left|\bspVec\right| &= \sqrt{x_1^2 + ... + x_n^2}\\
