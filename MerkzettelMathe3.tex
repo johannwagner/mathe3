@@ -1,4 +1,4 @@
-\documentclass[a4paper, landscape]{article}
+\documentclass[a4paper, 10pt, landscape]{article}
 
 \usepackage{multicol}
 \usepackage[german,ngerman]{babel}
@@ -14,14 +14,14 @@
 \usepackage{paralist}
 \usepackage{sfmath}
 \usepackage[compact]{titlesec}
-\titlespacing{\section}{0pt}{2ex}{1ex}
+\titlespacing{\section}{0pt}{1.5ex}{0ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 \setlength\parindent{0pt}
 \geometry{
     left=0.5cm,
     right=0.5cm,
-    top=1cm,
+    top=0.5cm,
     bottom=0.5cm,
     bindingoffset=5mm
 }
@@ -130,12 +130,14 @@
 				$(\tan x) = \frac{1}{(\cos x)^2}$ \\ 
 			\end{multicols}
 		\subsection{Verknüpfungsfunktionen}
-			\begin{align*}
-				Summenregel:\\ (f(x) + g(x))' &= f(x)' + g(x)'  \\ 
-				Produktregel:\\ (f(x)g(x))' &= f(x)'g(x)+g(x)'f(x)  \\
-				Quotientenregel:\\ (\frac{f(x)}{g(x)})' &= \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2} \\
-				Kettenregel:\\ (f(g(x)))' &= f(g(x))'g(x)' \\
-			\end{align*}
+			Summenregel:\\
+			$(f(x) + g(x))' = f(x)' + g(x)'$  \\ 
+			Produktregel:\\
+			$(f(x)g(x))' = f(x)'g(x)+g(x)'f(x)$  \\
+			Quotientenregel:\\
+			$(\frac{f(x)}{g(x)})' = \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2}$ \\
+			Kettenregel:\\
+			$(f(g(x)))' = f(g(x))'g(x)'$ \\
 	\section{Stochastik}
 	    $\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
     	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
@@ -330,6 +332,21 @@
 					Ly &= P^Tb \text{ mit } P^T = P^{-1}\\
 					Ux &= y
 				\end{align*}
+		\subsection{Jacobi-Verfahren}
+			Voraussetzungen: (Schwach) Diagonaldominant und Diagonalelemente nicht null.
+			Gegeben ist ein lineares Gleichungssystem mit $n$ Variablen und $n$ Gleichungen.
+			$
+			\begin{matrix}
+				a_{11}\cdot x_1+\dotsb+a_{1n}\cdot x_n&=&b_1\\
+				a_{21}\cdot x_1+\dotsb+a_{2n}\cdot x_n&=&b_2\\
+				&\vdots&\\
+				a_{n1}\cdot x_1+\dotsb+a_{nn}\cdot x_n&=&b_n\\
+			\end{matrix}
+			$
+	
+			Um dieses zu lösen, wird die $i$-te Gleichung nach der $i$-ten Variablen $x_i$ aufgelöst,\\
+			$x_i^{(m+1)}:=\frac1{a_{ii}}\left(b_i-\sum_{j\not=i} a_{ij}\cdot x_j^{(m)}\right), \, i=1,\dotsc,n$\\
+			und diese Ersetzung, ausgehend von einem Startvektor $x^{(0)}$, iterativ wiederholt.
 		\subsection{Cholesky-Zerlegung}
 			Voraussetzung: symmetrische Matrix \& Determinante jeder Teilmatrix > 0\\
 			$A=GG^{T}$\\
@@ -356,11 +373,7 @@
 		\subsection{Matrixnormen}
 			\begin{align*}
 				\left|\bspVec\right| &= \sqrt{x_1^2 + ... + x_n^2}\\
-				\left|\bspVec\right|_1 &= \sum_{i = 1}^{n} x_i\\
-				\left|\bspVec\right|_\infty &= \max_{1 \le i \le n} x_i\\
-				A &\in R^{n \times n}\\
-				\left|A\right|_1 = \max_{1 \le j \le n} &\sum_{i = 1}^{n} a_{ij} \text{ Spaltens.} \\
-				\left|A\right|_1 = \max_{1 \le i \le n} &\sum_{j = 1}^{n} a_{ij} \text{ Zeilens.} 
+				&... 
 			\end{align*}
 	\section{Differentialgleichung}
 		\subsection{DGL 1. Ordnung}	
@@ -394,7 +407,8 @@
 				3. Parameter des Ansatzes ausrechnen und als $y_p$ angeben.
 \end{small}
 \end{multicols}
-\begin{small}
+\begin{multicols}{2}
+\begin{tiny}
 	\section{Sin-Cos-Tan Tabelle}
 		\begin{tabular}{l | c  c  c  c  c  c  c  c  c  c }
 			\noindent
@@ -404,5 +418,6 @@
 			$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$ & $-\frac{\sqrt{2}}{2}$ & $-\frac{\sqrt{3}}{2}$ & $-1$ & $-\frac{\sqrt{3}}{2}$\\\hline
 			$\tan$ & $0$ & $\frac{\sqrt{3}}{3}$ & $1$ & $\sqrt{3}$ &$\pm\infty$ & $-\sqrt{3}$ & $-1$ & $-\frac{\sqrt{3}}{3}$ & $0$ & $\frac{\sqrt{3}}{3}$
 		\end{tabular}
-	\end{small}
+	\end{tiny}
+\end{multicols}
 \end{document}
