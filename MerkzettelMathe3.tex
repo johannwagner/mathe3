@@ -235,7 +235,7 @@
 		    		P(a\le x\le b)&= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})
 		    	\end{align*}
 		    	Für $\Phi$ siehe Standardnormalverteilungstabelle.\\
-		    	$\Phi(-x) = 1-\Phi(x)$\\
+		    	Wenn $\Phi(-x)$, dann $1-\Phi(x)$\\
 	    	
 		    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
 		    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
@@ -256,7 +256,7 @@
 				    z Werte in Normalverteilungstabelle nachschlagen. 
 		    	\subsubsection{T-Verteilung}
 			    	Keine Varianz gegeben. Stichprobe muss vorhanden sein.\\
-				    $\bar{x}=\text{arethmetisches Mittel}=\frac{\sum x}{n}$\\
+				    $\bar{x}=\text{arithmetisches Mittel}=\frac{\sum x}{n}$\\
 				    $\sigma=\sqrt{\frac{\sum(x-\bar{x})^{2}}{n-1}}$\\
 				    $[\bar{x}-t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}};\bar{x}+t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}}]$\\
 				    T Werte in T-Verteilungstabelle nachschlagen.
@@ -264,8 +264,8 @@
 		\subsection{Lagrange'sches Interpolationspolynom}
 			\begin{align*}
 				n &= \text{Anzahl der Stützstellen}\\
-				p(x) &= \sum_{i=0}^{n} y_i \cdot L_i(x) \\
-				L_i(x) &= \prod_{j = 0, j \neq i}^{n} \frac{x - x_j}{x_i - x_j}
+				p(x) &= \sum_{i=0}^{n-1} y_i \cdot L_i(x) \\
+				L_i(x) &= \prod_{j = 0, j \neq i}^{n-1} \frac{x - x_j}{x_i - x_j}
 			\end{align*}
 		\subsection{Newton'sches Interpolationspolynom}
 			\begin{align*}
@@ -299,7 +299,12 @@
 		        x_i &= a+i\cdot h\\
 		        p_{n}(x) &= h\cdot \sum_{i=0}^{n}\alpha_{i,n}\cdot f(x_{i})
 			\end{align*}
-
+		\subsection{Sekanten-Verfahren}
+			Nur bei stetigem Intervall bestimmen\\
+			\begin{compactitem}
+				\item[1.] Startwerte bestimmen: $x_0$ und $x_1$
+				\item[2.] $x_{n+1}=x_{n}-\frac{x_{n}-x_{n-1}}{f(x_{n})-f(x_{n-1})}\cdot f(x_{n})$
+			\end{compactitem}
 		\subsection{QR-Zerlegung}
 			Seien $A \in \mathbb{R}^{mxn}$ mit $m \ge n$ und $rg(A) = n$.\\
 			Es seien $a_1, a_2, ..., a_n \in \mathbb{R}^m$ die Spaltenvektoren von $A$. \\
