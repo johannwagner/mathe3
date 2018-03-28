@@ -14,7 +14,7 @@
 \usepackage{sfmath}
 \usepackage[compact]{titlesec}
 \titleformat{\section}
-{\normalfont\large\bfseries}{\thesection}{0.5em}{}
+{\normalfont\normalsize\bfseries}{\thesection}{0.5em}{}
 \titleformat{\subsection}
 {\normalfont\bfseries}{\thesubsection}{0.5em}{}
 \titleformat{\subsubsection}
@@ -415,34 +415,45 @@
 					\item Seiten jeweils integrieren ($+k_1, +k_2\rightarrow k_3$)
 					\item Nach y umstellen (jeweils k++)
 				\end{compactenum}	
-			\subsubsection{Variation der Konstanten}
-				\begin{itemize}
-					\item Alle Ableitungen $y'$ umformen: \\
-					$y' = \frac{dy}{dx}$
-					\item Umstellen durch Integration und $e^{ln(x)}$-Trick nach $y$
-				\end{itemize}
+			\subsubsection{Variation der Konstanten (inhomogen)}
+				Wenden wir an wenn wir die Variablen nicht geteilt bekommen:\\
+				$y'+b(x)\cdot y=0$ für $y_1$\\
+				$y'+b(x)\cdot y=a(x)$ für $y_2$\\
+				
+				$y_1 = c\cdot e^{\int b(x)dx}$\\
+				$y_2 = \int(a(x)e^{\int b(x)dx})dx\cdot e^{-\int b(x)dx}$\\
+				
+				$y(x)=y_1+y_2$ = allgemeine Lösung
 			\subsection{Anfangswertproblem}
-				Wir haben unsere aufgelöste DGL: $y = C_1 \cdot ...$
-				Beim AWP haben wir eine Zusatzbedingung, die ähnlich zu $y(0) = 2$ ist. AWP löst sich, indem wir einsetzen und zur Konstante umformen.
-		\subsection{DGL 2. Ordnung}	
-			Eine DGL kann eine Störfunktion enthalten. Störfunktionen sind für den inhomogenen Teil der Lösung verantwortlich. Jeder Teil, welcher nicht abhängig von $y^{(n)}$ ist, ist eine Störfunktion. $y(t) = y_h(t) + y_p(t)$
-			\subsubsection{Charakteristisches Polynom}
-				Umformen der Ableitungen: $y^{(n)} = \lambda^n$
-				Anschließend werden die Lösungen für $\lambda$ bestimmt.
-				
-				Einfache Nullstelle:\\
-				$e^{\lambda \cdot x}$\\
-				k-fache Nullstelle:\\
-				$x^{k-1} e^{\lambda x}$\\
-				Komplexe Nullstelle:\\
-				$(a \pm bi) \rightarrow e^{ax} \cdot sin(b), e^{ax} \cdot cos(b)$
-				
-				Bsp.: $y_h(t) = C_1 \cdot e^{2x} + C_2 \cdot e^{4x}$\\
-				Bei inhomogenen DGL muss ein Ansatz gefunden werden, der zur Lösung führt, wenn man ihn samt Ableitungen in die ursprüngliche DGL einsetzt.\\
-				\\
-				1. Aufstellen des Ansatzes für $y = \{ \text{Ansatz} \}$\\
-				2. Ableiten und Einsetzen als homogenen Teil der DGL.\\
-				3. Parameter des Ansatzes ausrechnen und als $y_p$ angeben.
+				Siehe oben (homogen oder inhomogen)
+			\subsection{DGL 2. Ordnung}
+				\begin{compactenum}	
+					\item Umstellen nach:\\$y''+a_0\cdot y'+a_1\cdot y=b(x)$
+					\item Fälle für $a_0$ und $a_1$ anschauen:
+					\begin{compactenum}
+						\item[1 Fall:] $(\frac{a_0}{2})^2>a_1\\
+						\rightarrow y_1(x)=e^{\lambda_1x}$,\\ $y_2(x)=xe^{\lambda_2x}\\
+						\Rightarrow \lambda_{1/2}=-\frac{a_0}{2}\pm\sqrt{(\frac{a_0}{2})^2-a_1}$
+						\item[2 Fall:] $(\frac{a_0}{2})^2=a_1\\
+						\rightarrow y_1(x)=e^{\lambda x}$,\\ $y_2(x)=xe^{\lambda x}\\
+						\Rightarrow \lambda_{1/2}=-\frac{a_0}{2}$
+						\item[3 Fall:] $(\frac{a_0}{2})^2<a_1$\\
+						$\rightarrow y_1(x)=cos(w\cdot x)\cdot e^{\lambda x}$,\\
+						$y_2(x)=sin(w\cdot x)\cdot e^{\lambda x}\\
+						\text{mit } \lambda=-\frac{a_0}{2}$,\\ $w=\sqrt{a_1-\frac{a_0}{2}}$
+					\end{compactenum}
+					\item Allgemeine Lösung der homogenen Gleichung bestimmen:\\
+					$y_h=c_1\cdot y_1(x)+c_2\cdot y_2(x)$
+					\item Allgemeine Lösung der inhomogenen Gleichung bestimmen:\\
+					$y_p=w_1\cdot y_1(x)+w_2\cdot y_2(x)\\
+					w_{1/2} \rightarrow$ Wronski Determinanten\\
+					$w_1(x)=\int-\frac{y_2(x)\cdot b(x)}{w(x)}\\
+					w_2(x)=\int\frac{y_1(x)\cdot b(x)}{w(x)}\\
+					w(x)$: Fall 1: $(\lambda_2-\lambda_1)\cdot e^{(\lambda_1+\lambda_2)x}$\\
+					Fall 2: $e^{2\lambda x}$\\
+					Fall 3: $w\cdot e^{2\lambda x}$
+					\item Partikuläre Lösung: $y(x)=y_h+y_p$
+				\end{compactenum}
 \end{small}
 \end{multicols}
 \begin{multicols}{2}
