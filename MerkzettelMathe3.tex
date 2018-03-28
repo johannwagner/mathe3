@@ -13,6 +13,12 @@
 \usepackage{paralist}
 \usepackage{sfmath}
 \usepackage[compact]{titlesec}
+\titleformat{\section}
+{\normalfont\large\bfseries}{\thesection}{0.5em}{}
+\titleformat{\subsection}
+{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}
+{\normalfont\bfseries}{\thesubsubsection}{0.5em}{}
 \titlespacing{\section}{0pt}{1.5ex}{0ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
@@ -400,7 +406,15 @@
 				\end{align*}
 			\end{tiny}
 	\section{Differentialgleichung}
-		\subsection{DGL 1. Ordnung}	
+		\subsection{DGL 1. Ordnung}
+			\subsection{homogen}
+				\begin{compactenum}
+					\item Trennung der Variablen
+					\item y' durch $\frac{dy}{dx}$ ersetzen
+					\item dx auf x Seite umstellen
+					\item Seiten jeweils integrieren ($+k_1, +k_2\rightarrow k_3$)
+					\item Nach y umstellen (jeweils k++)
+				\end{compactenum}	
 			\subsubsection{Variation der Konstanten}
 				\begin{itemize}
 					\item Alle Ableitungen $y'$ umformen: \\
