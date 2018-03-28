@@ -89,13 +89,16 @@
 	    $e^{Foo}$ u.ä. muss vorher substituiert werden!\\
         $\begin{matrix}
         \text{Funktion} & \text{Aufleitung} \\
-        c & c \cdot x \\
-        x^a, a \neq -1 & \frac{x^{a+1}}{a+1}\\
-        x^{-1}, x \neq 0 & ln(|x|)\\
+        0 & C \\
+        a & a \cdot x+C \\
+        x^a, a \neq -1 & \frac{x^{a+1}}{a+1}+C\\
+        x^{-1}, x \neq 0 & ln(|x|)+C\\
         e^x & e^x \\
-        a^x & \frac{a^x}{ln(a)} \\
-        sin(x) & -cos(x)\\
-        cos(x) & sin(x)
+        a^x & \frac{a^x}{ln(a)}+C \\
+        \frac{1}{x} & \ln|x|+C\\
+        \ln(x) & x \ln(x)-x+C\\
+        sin(x) & -cos(x)+C\\
+        cos(x) & sin(x)+C 
         \end{matrix}
         $
         \subsection{Partielle Integration}
@@ -105,11 +108,12 @@
 	        $\int f(g(x)) \cdot g'(x) dx = \int f(y) dy$
 	        \begin{align*}
 	            \int \frac{1}{5x - 7} dx &= ?\\
-	            z &= 5x - 7 \\
-	            \frac{dz}{dx} &= 5 \\   
-	            \frac{dz}{5} &= dx  \\
-	            \int \frac{1 \cdot dz}{z \cdot 5} &= \frac{1}{5} \int \frac{1}{z} dz \\
-                &= \frac{1}{5} ln(z) \\
+	            u &= 5x-7\\
+	            u' &= \frac{du}{dx} \\
+	            5 &= \frac{du}{dx} \\   
+	            \frac{du}{5} &= dx  \\
+	            \int \frac{1 \cdot du}{u \cdot 5} &= \frac{1}{5} \int \frac{1}{u} du \\
+                &= \frac{1}{5} ln(u) \\
                 &= \frac{1}{5} ln(5x-7)
 	        \end{align*}
 	\section{Ableitung}
@@ -260,23 +264,38 @@
 				    T Werte in T-Verteilungstabelle nachschlagen.
 	\section{Numerik}
 		\subsection{Lagrange'sches Interpolationspolynom}
-			\begin{align*}
-				n &= \text{Anzahl der Stützstellen}\\
-				p(x) &= \sum_{i=0}^{n-1} y_i \cdot L_i(x) \\
-				L_i(x) &= \prod_{j = 0, j \neq i}^{n-1} \frac{x - x_j}{x_i - x_j}
-			\end{align*}
+			n = Anzahl der Stützstellen\\
+			$p(x) = \sum_{i=0}^{n-1} y_i \cdot L_i(x) \\
+			L_i(x) = \prod_{j = 0, j \neq i}^{n-1} \frac{x - x_j}{x_i - x_j}$
 		\subsection{Newton'sches Interpolationspolynom}
-			\begin{align*}
-				n &= \text{Anzahl der Stützstellen}\\
-				p(x) &= a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1)\\
-			    &+ a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_n)
-			\end{align*}
+			n = Anzahl der Stützstellen\\
+			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_n)$
 			Auflösen nach $a$ für die einzelnen Faktoren:
 			\begin{align*}
 				y_0 &= a_0\\
 				y_1 &= a_0 + a_1(x_1 - x_0)	\\
 				y_2 &= a_0 + a_1(x_2 - x_0) + a_2(x_2 - x_0)(x_2 - x_1)
 			\end{align*}
+			\subsection{Ausgleichsrechung}
+				A ist gegeben, n=Grad, x=Stützstellen
+				\begin{multicols}{2}
+					$C=\begin{pmatrix}
+						c_0\\
+						c_1\\
+						...\\
+						c_n
+					\end{pmatrix}
+					Y=\begin{pmatrix}
+						f(x_0)\\
+						f(x_1)\\
+						...\\
+						f(x_n)
+					\end{pmatrix}$
+				\end{multicols}
+					$\Rightarrow A^T\cdot A\cdot c=A^T\cdot y$\\
+					Gleichungssystem lösen
+				
+				
 			\subsubsection{Newton-Verfahren für Nullstellen}
 				Voraussetzung: Muss stetig sein (hinschreiben!)\\
 				stetig = an jeder Stelle definiert\\
