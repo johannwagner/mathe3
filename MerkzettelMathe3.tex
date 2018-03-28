@@ -10,7 +10,6 @@
 \usepackage{graphicx}
 \usepackage{fancyhdr}
 \usepackage{geometry}
-\usepackage{mathptmx}
 \usepackage{paralist}
 \usepackage{sfmath}
 \usepackage[compact]{titlesec}
@@ -212,9 +211,7 @@
 			    \end{align*}
 			\subsubsection{Hypergeometrische Verteilung}
 				N = Grundmenge, n = Stichprobe, k = gewünscht, M = gewünschte Eigenschaft\\
-				\begin{align*}
-					P(X = k) = \frac{{M \choose k} \cdot {N - M \choose n - k}}{{N \choose n}}
-				\end{align*}
+					$P(X = k) = \frac{{M \choose k} \cdot {N - M \choose n - k}}{{N \choose n}}$
 		    \subsubsection{Poisson-Verteilung}
 			    Die Poisson-Verteilung eignet sich für seltene Ereignisse in einem fest definierten Zeitraum.
 			    \begin{align*}
@@ -359,7 +356,7 @@
 			\begin{tiny}
 				$A=\begin{pmatrix}
 					g_{11}^{2} & g_{11}g_{21} & g_{11}g_{31}\\
-					g_{11}g_{21} & g_{21}^{2}g_{22}^{2} & g_{21}g_{31}+g_{22}g_{32}\\
+					g_{11}g_{21} & g_{21}^{2}+g_{22}^{2} & g_{21}g_{31}+g_{22}g_{32}\\
 					g_{11}g_{31} & g_{21}g_{31}+g_{22}g_{32} & g_{31}^{2}+g_{32}^{2}+g_{33}^{2}
 				\end{pmatrix}$
 				\begin{multicols}{2}
@@ -376,10 +373,12 @@
 				\end{multicols}
 			\end{tiny}
 		\subsection{Matrixnormen}
-			\begin{align*}
-				\left|\bspVec\right| &= \sqrt{x_1^2 + ... + x_n^2}\\
-				&... 
-			\end{align*}
+			\begin{tiny}
+				\begin{align*}
+					\left|\bspVec\right| &= \sqrt{x_1^2 + ... + x_n^2}\\
+					&... 
+				\end{align*}
+			\end{tiny}
 	\section{Differentialgleichung}
 		\subsection{DGL 1. Ordnung}	
 			\subsubsection{Variation der Konstanten}
