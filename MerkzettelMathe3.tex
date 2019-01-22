@@ -1,48 +1,35 @@
-\documentclass[a4paper, 10pt, landscape]{article}
+\documentclass[a4paper, 8pt, landscape]{extarticle}
 
 \usepackage{multicol}
 \usepackage[german,ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+
 \usepackage{fancyhdr}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{geometry}
+
+\usepackage[margin=0.5cm]{geometry}
 \usepackage{paralist}
-\usepackage{sfmath}
+
 \usepackage[compact]{titlesec}
 \titleformat{\section}
-{\normalfont\normalsize\bfseries}{\thesection}{0.5em}{}
+{\scshape}{\thesection}{0.5em}{}
 \titleformat{\subsection}
-{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+{\scshape}{\thesubsection}{0.5em}{}
 \titleformat{\subsubsection}
-{\normalfont\bfseries}{\thesubsubsection}{0.5em}{}
+{\scshape}{\thesubsubsection}{0.5em}{}
 \titlespacing{\section}{0pt}{1.5ex}{0ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 \setlength\parindent{0pt}
-\geometry{
-    left=0.5cm,
-    right=0.5cm,
-    top=0.5cm,
-    bottom=0.5cm,
-    bindingoffset=5mm
-}
-%\setlength{\columnseprule}{0.4pt}
 \author{Johann Wagner, Jasper Orschulko}
-
-%\pagestyle{fancy}
 
 \lhead{Mathe 3 - Klausur Pott}
 \rhead{\thepage}
 \cfoot{Johann Wagner, Jasper Orschulko}
 \rfoot{\thepage}
-
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-\renewcommand{\familydefault}{\sfdefault}
 
 \newcommand{\bspVec}{\ensuremath{\begin{pmatrix} x_1\\ \vdots \\ x_n \end{pmatrix}}}
 \newcommand{\limTo}[1]{ \lim\limits_{x \rightarrow #1}}
@@ -53,8 +40,7 @@
 \title{Mathe III - Klausurhilfe}
 
 \begin{document}
-    \begin{multicols}{5}   
-	\begin{small}
+    \begin{multicols*}{5}
 	\section{Allgemeines}
 		\subsection{Binomische Formeln}
 			\begin{align*}
@@ -454,10 +440,6 @@
 					Fall 3: $w\cdot e^{2\lambda x}$
 					\item Partikuläre Lösung: $y(x)=y_h+y_p$
 				\end{compactenum}
-\end{small}
-\end{multicols}
-\begin{multicols}{2}
-\begin{tiny}
 	\section{Sin-Cos-Tan Tabelle}
 		\begin{tabular}{l | c  c  c  c  c  c  c  c  c  c }
 			\noindent
@@ -467,6 +449,5 @@
 			$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$ & $-\frac{\sqrt{2}}{2}$ & $-\frac{\sqrt{3}}{2}$ & $-1$ & $-\frac{\sqrt{3}}{2}$\\\hline
 			$\tan$ & $0$ & $\frac{\sqrt{3}}{3}$ & $1$ & $\sqrt{3}$ &$\pm\infty$ & $-\sqrt{3}$ & $-1$ & $-\frac{\sqrt{3}}{3}$ & $0$ & $\frac{\sqrt{3}}{3}$
 		\end{tabular}
-	\end{tiny}
-\end{multicols}
+\end{multicols*}
 \end{document}
