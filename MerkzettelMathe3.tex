@@ -10,8 +10,11 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 
+\usepackage{makecell}
+
 \usepackage[margin=0.5cm]{geometry}
 \usepackage{paralist}
+\setlength{\parindent}{0em}%
 
 \usepackage[compact]{titlesec}
 \titleformat{\section}
@@ -24,6 +27,8 @@
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 \setlength\parindent{0pt}
+
+
 \author{Johann Wagner, Jasper Orschulko}
 
 \lhead{Mathe 3 - Klausur Pott}
@@ -31,16 +36,23 @@
 \cfoot{Johann Wagner, Jasper Orschulko}
 \rfoot{\thepage}
 
-\newcommand{\bspVec}{\ensuremath{\begin{pmatrix} x_1\\ \vdots \\ x_n \end{pmatrix}}}
 \newcommand{\limTo}[1]{ \lim\limits_{x \rightarrow #1}}
 \newcommand{\limFromTo}[2]{ \lim\limits_{#2 \rightarrow #1}}
 
-\newenvironment{alignTab}{$\begin{aligned}}{\end{aligned}$}
+\let\oldint\int
+\renewcommand{\int}{\ensuremath{\textstyle\oldint}}
+
+\let\oldsum\sum
+\renewcommand{\sum}{\ensuremath{\textstyle\oldsum}}
 
 \title{Mathe III - Klausurhilfe}
 
 \begin{document}
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	
     \begin{multicols*}{5}
+   	\raggedcolumns
 	\section{Allgemeines}
 		\subsection{Binomische Formeln}
 			\begin{align*}
@@ -49,50 +61,107 @@
 			    a^{2}-b^{2} &= (a+b)\cdot(a-b)
 			\end{align*}
 		\subsection{Potenzgesetze}
-			\begin{multicols}{2}
-	            $a^m \cdot a^n = a^{m+n}$\\
-	            $a^n \cdot b^n = (ab)^n$\\
-	            $\frac{a^n}{a^m} = a^{n-m}$\\
-	            $\frac{a^n}{b^n} = \left(\frac{a}{b}\right)^n$\\
-	            $(a^n)^m = a^{mn}$\\
-	            $a^{-n} = \frac{1}{a^n}$\\
-	            $log_b(1) = 0$
-            \end{multicols}
+			\begin{align*}
+	            a^m \cdot a^n &= a^{m+n}\\
+	            a^n \cdot b^n &= (ab)^n\\
+	            \frac{a^n}{a^m} &= a^{n-m}\\
+	            \frac{a^n}{b^n} &= \left(\frac{a}{b}\right)^n\\
+	            (a^n)^m &= a^{mn}\\
+	            a^{-n} &= \frac{1}{a^n}\\
+	            log_b(1) &= 0
+            \end{align*}
          \subsection{Logarithmus-Gesetze}
-		     \noindent
-	         $x = log_a(y) \Leftrightarrow y = a^x$\\
-	         $log(x) + log(y) = log(xy)$\\
-	         $log(x) - log(y) = log(\frac{x}{y})$\\
-	         $log_a(x) = \frac{log_b(x)}{log_b(a)}$  \\
-	         $log(u^r) = r \cdot ln(u)$
-	         \begin{multicols}{2}
-		         \noindent
-		         $ln(1) = 0$ \\
-		         $ln(e) = 1$ \\
-		         $ln(e^x) = x$ \\
-		         $e^{ln(x)} = x$
-	         \end{multicols}
+         	\begin{align*}
+		         x &= log_a(y) \Leftrightarrow y = a^x\\
+		         log(x) + log(y) &= log(xy)\\
+		         log(x) - log(y) &= log(\frac{x}{y})\\
+		         log_a(x) &= \frac{log_b(x)}{log_b(a)}\\
+		         log(u^r) &= r \cdot ln(u)\\
+		         ln(1) &= 0\\
+		         ln(e) &= 1\\
+		         ln(e^x) &= x\\
+		         e^{ln(x)} &= x
+		    \end{align*}
         \subsection{Komplexe Zahlen}
 	        $(a + bi) \pm (c + di) = (a \pm c) + (c \pm d)i$\\
-	        $(a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i$\\
+	        $(a + bi) * (c + di) = (ac - bd) + (ad + bc)i$\\
 	        
             $\displaystyle \frac{a + bi}{c + di} = \frac{ac + bd}{c^2 + d^2} + \frac{cb - ad}{c^2 + d^2}i$
+        \subsection{Binominalkoeffizient}
+        	$\binom{n}{k}=\frac{n!}{k!(n-k)!}$\\
+        	$
+        	\begin{tabular}{c | c c c c c c }
+        		\diaghead{n}{k} & 0 & 1 & 2 & 3 & 4 & 5\\
+        		\hline
+        		0 & 1 & 0 & 0 & 0 & 0 & 0\\
+        		1 & 1 & 1 & 0 & 0 & 0 & 0\\
+        		2 & 1 & 2 & 1 & 0 & 0 & 0\\
+        		3 & 1 & 3 & 3 & 1 & 0 & 0\\
+        		4 & 1 & 4 & 6 & 4 & 1 & 0\\
+        		5 & 1 & 5 & 10 & 10 & 5 & 1\\
+        	\end{tabular}
+        	$
+       	\subsection{Sin-Cos-Tan Tabelle}
+        	\begin{tabular}{l | c  c  c  c  c  c  c  c  c  c }
+        		$x$ & $0$ & $\frac{1}{6}\pi$ & $\frac{1}{4}\pi$ & $\frac{1}{3}\pi$ & $\frac{1}{2}\pi$\\\hline
+        		$Grad$ & $0$ & $30$ & $45$ & $60$ & $90$\\\hline
+        		$\sin$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$\\\hline
+        		$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$\\\hline
+        		$\tan$ & $0$ & $\frac{\sqrt{3}}{3}$ & $1$ & $\sqrt{3}$ &$\pm\infty$
+        	\end{tabular}
+    \section{Ableitung}
+        \subsection{typische Ableitungen}
+           	\begin{align*}
+           	(x)' &= 1 \\
+           	(ax)' &= a \\
+           	(ax^2)' &= 2ax \\
+           	(\frac{1}{x})' &= -\frac{1}{x^2} \\
+           	(\sqrt[]{x})' &= \frac{1}{2\sqrt[]{x}} \\
+           	(ax^b)' &= abx^{b-1} \\
+           	(e^x)' &= e^x  \\
+           	(e^{ax})' &= ae^{ax}  \\
+           	(a^x)' &= a^x*log(a)  \\
+           	(ln(x))' &= \frac{1}{x} \\
+           	(\sin x) &= \cos x \\
+           	(\cos x) &= -\sin x \\
+           	(\tan x) &= \frac{1}{(\cos x)^2}
+           	\end{align*}
+        \subsection{Verknüpfungsfunktionen}
+            \subsubsection{Summenregel}
+            $(f(x) + g(x))' = f(x)' + g(x)'$  \\ 
+            \subsubsection{Produktregel}
+            $(f(x)g(x))' = f(x)'g(x)+g(x)'f(x)$  \\
+            \subsubsection{Quotientenregel}
+            $(\frac{f(x)}{g(x)})' = \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2}$ \\
+            \subsubsection{Kettenregel}
+            $(f(g(x)))' = f(g(x))'g(x)'$ \\
 	\section{Integralrechnung}
 	    $e^{Foo}$ u.ä. muss vorher substituiert werden!\\
-        $\begin{matrix}
-        \text{Funktion} & \text{Aufleitung} \\
-        0 & C \\
-        a & a \cdot x+C \\
-        x^a, a \neq -1 & \frac{x^{a+1}}{a+1}+C\\
-        x^{-1}, x \neq 0 & ln(|x|)+C\\
-        e^x & e^x \\
-        a^x & \frac{a^x}{ln(a)}+C \\
-        \frac{1}{x} & \ln|x|+C\\
-        \ln(x) & x \ln(x)-x+C\\
-        sin(x) & -cos(x)+C\\
-        cos(x) & sin(x)+C 
-        \end{matrix}
-        $
+%        $\begin{matrix}
+%        \text{Funktion} & \text{Aufleitung} \\
+%        0 & C \\
+%        a & a \cdot x+C \\
+%        x^a, a \neq -1 & \frac{x^{a+1}}{a+1}+C\\
+%        x^{-1}, x \neq 0 & ln(|x|)+C\\
+%        e^x & e^x \\
+%        a^x & \frac{a^x}{ln(a)}+C \\
+%        \frac{1}{x} & \ln|x|+C\\
+%        \ln(x) & x \ln(x)-x+C\\
+%        sin(x) & -cos(x)+C\\
+%        cos(x) & sin(x)+C 
+%        \end{matrix}
+%        $
+        \begin{align*}
+        	\int 0 dx &= c\\
+	        \int a dx &= ax+c\\
+	        \int x^a dx &= \frac{x^{a+1}}{a+1}+c\\
+	        \int e^x dx &= e^x\\
+	        \int a^x dx &= \frac{a^x}{\ln(a)}+c\\
+	        \int x^{-1} dx &= \ln(|x|)+c\\
+	        \int \ln (x) dx &= x\ln(x)-x +c\\
+	        \int sin(x) dx &= -cos(x)+c\\
+	        \int cos(x) dx &= sin(x)+c\\
+        \end{align*}
         \subsection{Partielle Integration}
 	        Wenn $u$ und $v$ zwei differenzierbare Funktionen sind, dann gilt: \\
 	        $\int u' \cdot v = (u \cdot v) - \int u \cdot v'$
@@ -108,32 +177,6 @@
                 &= \frac{1}{5} ln(u) \\
                 &= \frac{1}{5} ln(5x-7)
 	        \end{align*}
-	\section{Ableitung}
-		\subsection{typische Ableitungen}
-			\begin{multicols}{2}		
-				$(x)' = 1$ \\
-				$(ax)' = a$ \\
-				$(ax^2)' = 2ax$ \\
-				$(\frac{1}{x})' = -\frac{1}{x^2}$ \\
-				$(\sqrt[]{x})' = \frac{1}{2\sqrt[]{x}}$ \\
-				$(ax^b)' = abx^{b-1}$ \\
-				$(e^x)' = e^x $ \\
-				$(e^{ax})' = ae^{ax} $ \\
-				$(a^x)' = a^x*log(a) $ \\
-				$ln(x)' = \frac{1}{x}$ \\
-				$(\sin x) = \cos x$ \\
-				$(\cos x) = -\sin x$ \\
-				$(\tan x) = \frac{1}{(\cos x)^2}$
-			\end{multicols}
-		\subsection{Verknüpfungsfunktionen}
-			Summenregel:\\
-			$(f(x) + g(x))' = f(x)' + g(x)'$  \\ 
-			Produktregel:\\
-			$(f(x)g(x))' = f(x)'g(x)+g(x)'f(x)$  \\
-			Quotientenregel:\\
-			$(\frac{f(x)}{g(x)})' = \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2}$ \\
-			Kettenregel:\\
-			$(f(g(x)))' = f(g(x))'g(x)'$ \\
 	\section{Stochastik}
 	    $\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
     	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
@@ -149,11 +192,15 @@
 		    	P(\emptyset) &= 0\\
 		    	A \subseteq B &\iff P(A) \leq P(B) \\
 		    	P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
-		    	&= \frac{P(B|A)\cdot P(A)}{P(B)} \\
+		    	P(A|B) &= \frac{P(B|A)\cdot P(A)}{P(B)} \\
 		    	P(A\cap B) &= P(B) \cdot P(A|B)\\
 		    	&= P(A) \cdot P(B|A)\\
 		    	P_B(A) &= P(A|B)
 	    	\end{align*}
+	    	\subsubsection{Unabhängigkeit}
+	    		Wenn gilt:\\
+	    		$P(A|B)=P(A)$ so wie $P(B|A)=P(B)$
+	    		
 		\subsection{Dichtefunktion}
 		    $w: \mathbb{R} \rightarrow \mathbb{R}$ ist eine integrierbare, nicht negative Funktion. \\
 	    	Es gilt: $\int_{-\infty}^{x} w(t) dt = F(x) = P(X \leq x)$
@@ -274,13 +321,13 @@
 					$C=\begin{pmatrix}
 						c_0\\
 						c_1\\
-						...\\
+						\vdots\\
 						c_n
 					\end{pmatrix}
 					Y=\begin{pmatrix}
 						f(x_0)\\
 						f(x_1)\\
-						...\\
+						\vdots\\
 						f(x_n)
 					\end{pmatrix}$
 				\end{multicols}
@@ -297,7 +344,6 @@
 			b = obere Grenze\\
 			$\alpha_{i,n}$ Tabelle:\\
 			\begin{tabular}{l | c c c c }
-				\noindent
 				n & $i=0$ & $i=1$ & $i=2$ & $i=3$ \\\hline
 				1 & $1/2$ & $1/2$ & & \\
 				2 & $1/3$ & $4/3$ & $1/3$ & \\
@@ -384,13 +430,6 @@
 					\end{pmatrix}$
 				\end{multicols}
 			\end{tiny}
-		\subsection{Matrixnormen}
-			\begin{tiny}
-				\begin{align*}
-					\left|\bspVec\right| &= \sqrt{x_1^2 + ... + x_n^2}\\
-					&... 
-				\end{align*}
-			\end{tiny}
 	\section{Differentialgleichung}
 		\subsection{DGL 1. Ordnung}
 			\subsection{homogen}
@@ -398,8 +437,8 @@
 					\item Trennung der Variablen
 					\item y' durch $\frac{dy}{dx}$ ersetzen
 					\item dx auf x Seite umstellen
-					\item Seiten jeweils integrieren ($+k_1, +k_2\rightarrow k_3$)
-					\item Nach y umstellen (jeweils k++)
+					\item Seiten integrieren ($c_1-c_2\rightarrow c$)
+					\item Nach y umstellen
 				\end{compactenum}	
 			\subsubsection{Variation der Konstanten (inhomogen)}
 				Wenden wir an wenn wir die Variablen nicht geteilt bekommen:\\
@@ -407,7 +446,7 @@
 				$y'+b(x)\cdot y=a(x)$ für $y_2$\\
 				
 				$y_1 = c\cdot e^{\int b(x)dx}$\\
-				$y_2 = \int(a(x)e^{\int b(x)dx})dx\cdot e^{-\int b(x)dx}$\\
+				$y_2 = \int(a(x)e^{-\int b(x)dx})dx\cdot e^{-\int b(x)dx}$\\
 				
 				$y(x)=y_1+y_2$ = allgemeine Lösung
 			\subsection{Anfangswertproblem}
@@ -440,14 +479,5 @@
 					Fall 3: $w\cdot e^{2\lambda x}$
 					\item Partikuläre Lösung: $y(x)=y_h+y_p$
 				\end{compactenum}
-	\section{Sin-Cos-Tan Tabelle}
-		\begin{tabular}{l | c  c  c  c  c  c  c  c  c  c }
-			\noindent
-			$x$ & $0$ & $\frac{1}{6}\pi$ & $\frac{1}{4}\pi$ & $\frac{1}{3}\pi$ & $\frac{1}{2}\pi$ & $\frac{2}{3}\pi$ & $\frac{3}{4}\pi$ & $\frac{5}{6}\pi$ & $\pi$ & $\frac{7}{6}\pi$\\\hline
-			$Grad$ & $0$ & $30$ & $45$ & $60$ & $90$ & $120$ & $135$ & $150$ & $180$ & $210$\\\hline
-			$\sin$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$\\\hline
-			$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$ & $-\frac{\sqrt{2}}{2}$ & $-\frac{\sqrt{3}}{2}$ & $-1$ & $-\frac{\sqrt{3}}{2}$\\\hline
-			$\tan$ & $0$ & $\frac{\sqrt{3}}{3}$ & $1$ & $\sqrt{3}$ &$\pm\infty$ & $-\sqrt{3}$ & $-1$ & $-\frac{\sqrt{3}}{3}$ & $0$ & $\frac{\sqrt{3}}{3}$
-		\end{tabular}
 \end{multicols*}
 \end{document}
