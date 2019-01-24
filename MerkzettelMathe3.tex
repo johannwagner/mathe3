@@ -99,12 +99,13 @@
         a & a \cdot x+C \\
         x^a, a \neq -1 & \frac{x^{a+1}}{a+1}+C\\
         x^{-1}, x \neq 0 & ln(|x|)+C\\
-        e^x & e^x \\
+        e^x & e^x+C\\
         a^x & \frac{a^x}{ln(a)}+C \\
         \frac{1}{x} & \ln|x|+C\\
         \ln(x) & x \ln(x)-x+C\\
         sin(x) & -cos(x)+C\\
-        cos(x) & sin(x)+C 
+        cos(x) & sin(x)+C\\
+        \frac{1}{1+y^2} & arctan(y) + c
         \end{matrix}
         $
         \subsection{Partielle Integration}
@@ -274,8 +275,8 @@
 			$p(x) = \sum_{i=0}^{n-1} y_i \cdot L_i(x) \\
 			L_i(x) = \prod_{j = 0, j \neq i}^{n-1} \frac{x - x_j}{x_i - x_j}$
 		\subsection{Newton'sches Interpolationspolynom}
-			n = Anzahl der Stützstellen\\
-			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_n)$
+			$n+1$ = Anzahl der Stützstellen\\
+			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + ... + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_{n-1})$
 			Auflösen nach $a$ für die einzelnen Faktoren:
 			\begin{align*}
 				y_0 &= a_0\\
@@ -344,7 +345,7 @@
 			L Matrizen sind Einheitsmatrizen plus:
 				\begin{compactitem}
 				\item[Step 1:] L1 Matrix aufbauen:\\
-				$x \in \{1,2\}$\\
+				$x \in \{2,3\}$\\
 				$L_{x,1}=-\frac{A(x,1)}{A(1,1)}$ 
 				\item[Step 2:] $\tilde{A}=L1\cdot A$
 				\item[Step 3:] L2 Matrix aufbauen:\\
@@ -376,7 +377,7 @@
 			$x_i^{(m+1)}:=\frac1{a_{ii}}\left(b_i-\sum_{j\not=i} a_{ij}\cdot x_j^{(m)}\right), \, i=1,\dotsc,n$\\
 			und diese Ersetzung, ausgehend von einem Startvektor $x^{(0)}$, iterativ wiederholt.
 		\subsection{Cholesky-Zerlegung}
-			Voraussetzung: symmetrische Matrix \& Determinante jeder Teilmatrix > 0\\
+			Voraussetzung: symmetrische Matrix(alles außer Hauptdiagonale gespiegelt) \& positiv definit($A_{1,1}>0, det(A)>0$).\\
 			$A=GG^{T}$\\
 			
 			\begin{tiny}
@@ -406,21 +407,15 @@
 				\end{align*}
 			\end{tiny}
 	\section{Differentialgleichung}
+		Nett-to-know: $y'=\frac{d}{dx}\cdot y, y''= \frac{d^2}{dx^2}\cdot y$
 		\subsection{DGL 1. Ordnung}
-			\subsection{homogen}
-				\begin{compactenum}
-					\item Trennung der Variablen
-					\item y' durch $\frac{dy}{dx}$ ersetzen
-					\item dx auf x Seite umstellen
-					\item Seiten jeweils integrieren ($+k_1, +k_2\rightarrow k_3$)
-					\item Nach y umstellen (jeweils k++)
-				\end{compactenum}	
+					Für homogene DGL nehmen wir nur $y_1$
 			\subsubsection{Variation der Konstanten (inhomogen)}
 				Wenden wir an wenn wir die Variablen nicht geteilt bekommen:\\
 				$y'+b(x)\cdot y=0$ für $y_1$\\
 				$y'+b(x)\cdot y=a(x)$ für $y_2$\\
 				
-				$y_1 = c\cdot e^{\int b(x)dx}$\\
+				$y_1 = c\cdot e^{-\int b(x)dx}$\\
 				$y_2 = \int(a(x)e^{\int b(x)dx})dx\cdot e^{-\int b(x)dx}$\\
 				
 				$y(x)=y_1+y_2$ = allgemeine Lösung
