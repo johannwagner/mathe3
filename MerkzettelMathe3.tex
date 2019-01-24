@@ -54,7 +54,7 @@
 \begin{document}
 	\setlength{\abovedisplayskip}{0pt}
 	\setlength{\belowdisplayskip}{0pt}
-	
+
     \begin{multicols*}{5}
    	\raggedcolumns
 	\section{Allgemeines}
@@ -89,7 +89,7 @@
         \subsection{Komplexe Zahlen}
 	        $(a + bi) \pm (c + di) = (a \pm c) + (c \pm d)i$\\
 	        $(a + bi) * (c + di) = (ac - bd) + (ad + bc)i$\\
-	        
+
             $\displaystyle \frac{a + bi}{c + di} = \frac{ac + bd}{c^2 + d^2} + \frac{cb - ad}{c^2 + d^2}i$
         \subsection{Binominalkoeffizient}
         	$\binom{n}{k}=\frac{n!}{k!(n-k)!}$\\
@@ -134,7 +134,7 @@
            	\end{align*}
         \subsection{Verknüpfungsfunktionen}
             \subsubsection{Summenregel}
-            $(f(x) + g(x))' = f(x)' + g(x)'$  \\ 
+            $(f(x) + g(x))' = f(x)' + g(x)'$  \\
             \subsubsection{Produktregel}
             $(f(x)g(x))' = f(x)'g(x)+g(x)'f(x)$  \\
             \subsubsection{Quotientenregel}
@@ -163,7 +163,7 @@
 	            \int \frac{1}{5x - 7} dx &= ?\\
 	            u &= 5x-7\\
 	            u' &= \frac{du}{dx} \\
-	            5 &= \frac{du}{dx} \\   
+	            5 &= \frac{du}{dx} \\
 	            \frac{du}{5} &= dx  \\
 	            \int \frac{1 \cdot du}{u \cdot 5} &= \frac{1}{5} \int \frac{1}{u} du \\
                 &= \frac{1}{5} ln(u) \\
@@ -191,7 +191,7 @@
 	    		Wenn gilt:\\
 	    		$P(A|B)=P(A)$ so wie $P(B|A)=P(B)$\\
 	    		$Cov(A,B)=0$
-	    		
+
 		\subsection{Dichtefunktion}
 		    $w: \mathbb{R} \rightarrow \mathbb{R}$ ist eine integrierbare, nicht negative Funktion. \\
 	    	Es gilt: $\int_{-\infty}^{x} w(t) dt = F(x) = P(X \leq x)$
@@ -232,7 +232,7 @@
 			x_{\lceil{np}\rceil} & \text{falls } n \text{ nicht ganzz.}
 			\end{cases}$
 	    \subsection{Verschiedene Verteilungen}
-			\subsubsection{Gleichverteilung}	
+			\subsubsection{Gleichverteilung}
 				Die Gleichverteilung ist die einfachste Verteilung. Jede Möglichkeit hat die gleiche Wahrscheinlichkeit. Ein Würfel ist gleichverteilt mit $P(x_i) = \frac{1}{6}$.\\
 				\begin{align*}
 					P(X = x_i) = \frac{1}{N}
@@ -268,7 +268,7 @@
 			    \begin{align*}
 				    X = B(n, p) \\
 				    \lambda = n \cdot p \\\\
-				    P(X = k) \sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}	
+				    P(X = k) \sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}
 			    \end{align*}
 	    	\subsection{Normalverteilung}
 		    	$N(\mu, \sigma^2)$ ist eine Normalverteilung. Für $\mu = 1$ und $\sigma = 1$ ist es eine Standardnormalverteilung.
@@ -280,7 +280,7 @@
 		    	\end{align*}
 		    	Für $\Phi$ siehe Standardnormalverteilungstabelle.\\
 		    	Wenn $\Phi(-x)$, dann $1-\Phi(x)$\\
-	    	
+
 		    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
 		    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
 		    	$X_P$ ist possionverteilt. Wenn $\lambda \ge 9$, dann $F_P(x) \sim \Phi\left(\frac{x + 0.5 - \lambda}{\sqrt{\lambda}}\right)$.
@@ -288,7 +288,7 @@
 		    	$Vertrauensgrad=1-\alpha$
 		    	\subsubsection{Normalverteilung}
 				    $[\frac{k}{n}-z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}};\frac{k}{n}+z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}}]$\\
-				    z Werte in Normalverteilungstabelle nachschlagen. 
+				    z Werte in Normalverteilungstabelle nachschlagen.
 		    	\subsubsection{T-Verteilung}
 			    	Keine Varianz gegeben. Stichprobe muss vorhanden sein.\\
 				    $\bar{x}=\text{arithmetisches Mittel}=\frac{\sum x}{n}$\\
@@ -301,8 +301,8 @@
 			$p(x) = \sum_{i=0}^{n-1} y_i \cdot L_i(x) \\
 			L_i(x) = \prod_{j = 0, j \neq i}^{n-1} \frac{x - x_j}{x_i - x_j}$
 		\subsection{Newton'sches Interpolationspolynom}
-			n = Anzahl der Stützstellen\\
-			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_n)$
+			$n+1$ = Anzahl der Stützstellen\\
+			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + ... + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_{n-1})$
 			Auflösen nach $a$ für die einzelnen Faktoren:
 			\begin{align*}
 				y_0 &= a_0\\
@@ -327,12 +327,12 @@
 				\end{multicols}
 					$\Rightarrow A^T\cdot A\cdot c=A^T\cdot y$\\
 					Gleichungssystem lösen
-				
-				
+
+
 			\subsubsection{Newton-Verfahren für Nullstellen}
 				Voraussetzung: Muss stetig sein (hinschreiben!)\\
 				stetig = an jeder Stelle definiert\\
-				Allgemeine Formel: $x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}$ 
+				Allgemeine Formel: $x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}$
 	    \subsection{Newton-Cotes-Formeln}
    			a = untere Grenze\\
 			b = obere Grenze\\
@@ -357,26 +357,26 @@
 		\subsection{QR-Zerlegung}
 			Seien $A \in \mathbb{R}^{mxn}$ mit $m \ge n$ und $rg(A) = n$.\\
 			Es seien $a_1, a_2, ..., a_n \in \mathbb{R}^m$ die Spaltenvektoren von $A$. \\
-			Die Vektoren $u_1, u_2, ..., u_n \in \mathbb{R}^m$ sind die Gram-Schmidt orthogonalisierten Vektoren. 
+			Die Vektoren $u_1, u_2, ..., u_n \in \mathbb{R}^m$ sind die Gram-Schmidt orthogonalisierten Vektoren.
 			\begin{align*}
 				u_1 &= \frac{1}{|a_1|} a_1\\
 				u_i' &= a_i - \sum_{j = 1}^{i-1} <u_j, a_i> \cdot u_j\\
-				u_i &= \frac{u_i'}{|u_i'|}\\\\	 
+				u_i &= \frac{u_i'}{|u_i'|}\\\\
 				Q &= (u_1, u_2, ..., u_n)\\
-				Q^{-1}\cdot A &= R 
+				Q^{-1}\cdot A &= R
 			\end{align*}
 		\subsection{LU-Zerlegung}
 			%Fancy shit: https://www.youtube.com/watch?v=Gn2euB6dBQA
 			L Matrizen sind Einheitsmatrizen plus:
 				\begin{compactitem}
 				\item[Step 1:] L1 Matrix aufbauen:\\
-				$x \in \{1,2\}$\\
-				$L_{x,1}=-\frac{A(x,1)}{A(1,1)}$ 
+				$x \in \{2,3\}$\\
+				$L_{x,1}=-\frac{A(x,1)}{A(1,1)}$
 				\item[Step 2:] $\tilde{A}=L1\cdot A$
 				\item[Step 3:] L2 Matrix aufbauen:\\
 				$L_{3,2}=-\frac{\tilde{A}(3,2)}{\tilde{A}(2,2)}$
 				\item[Step 4:] $U=L2\cdot\tilde{A}$
-				\item[Step 5:] $L=L_1^{-1}\cdot L_2^{-1}$ (=Vorzeichen außerhalb Diagonale ändern.) 	
+				\item[Step 5:] $L=L_1^{-1}\cdot L_2^{-1}$ (=Vorzeichen außerhalb Diagonale ändern.)
 				\end{compactitem}
 			\subsubsection{Lösung von PLUx = b}
 				Wir berechnen zunächst ein y, welches ein Zwischenergebnis ist. Die Schritte sind sehr einfach, da L und U Dreiecksmatrizen sind.
@@ -397,14 +397,14 @@
 				a_{n1}\cdot x_1+\dotsb+a_{nn}\cdot x_n&=&b_n\\
 			\end{matrix}
 			$
-	
+
 			Um dieses zu lösen, wird die $i$-te Gleichung nach der $i$-ten Variablen $x_i$ aufgelöst,\\
 			$x_i^{(m+1)}:=\frac1{a_{ii}}\left(b_i-\sum_{j\not=i} a_{ij}\cdot x_j^{(m)}\right), \, i=1,\dotsc,n$\\
 			und diese Ersetzung, ausgehend von einem Startvektor $x^{(0)}$, iterativ wiederholt.
 		\subsection{Cholesky-Zerlegung}
-			Voraussetzung: symmetrische Matrix \& Determinante jeder Teilmatrix > 0\\
+			Voraussetzung: symmetrische Matrix(alles außer Hauptdiagonale gespiegelt) \& positiv definit($A_{1,1}>0, det(A)>0$).\\
 			$A=GG^{T}$\\
-			
+
 			\begin{tiny}
 				$A=\begin{pmatrix}
 					g_{11}^{2} & g_{11}g_{21} & g_{11}g_{31}\\
@@ -425,28 +425,22 @@
 				\end{multicols}
 			\end{tiny}
 	\section{Differentialgleichung}
+		Nett-to-know: $y'=\frac{d}{dx}\cdot y, y''= \frac{d^2}{dx^2}\cdot y$
 		\subsection{DGL 1. Ordnung}
-			\subsection{homogen}
-				\begin{compactenum}
-					\item Trennung der Variablen
-					\item y' durch $\frac{dy}{dx}$ ersetzen
-					\item dx auf x Seite umstellen
-					\item Seiten integrieren ($c_1-c_2\rightarrow c$)
-					\item Nach y umstellen
-				\end{compactenum}	
+					Für homogene DGL nehmen wir nur $y_1$
 			\subsubsection{Variation der Konstanten (inhomogen)}
 				Wenden wir an wenn wir die Variablen nicht geteilt bekommen:\\
 				$y'+b(x)\cdot y=0$ für $y_1$\\
 				$y'+b(x)\cdot y=a(x)$ für $y_2$\\
-				
-				$y_1 = c\cdot e^{\int b(x)dx}$\\
+
+				$y_1 = c\cdot e^{-\int b(x)dx}$\\
 				$y_2 = \int(a(x)e^{\int b(x)dx})dx\cdot e^{-\int b(x)dx}$\\
-				
+
 				$y(x)=y_1+y_2$ = allgemeine Lösung
 			\subsection{Anfangswertproblem}
 				Siehe oben (homogen oder inhomogen)
 			\subsection{DGL 2. Ordnung}
-				\begin{compactenum}	
+				\begin{compactenum}
 					\item Umstellen nach:\\$y''+a_0\cdot y'+a_1\cdot y=b(x)$
 					\item Fälle für $a_0$ und $a_1$ anschauen:
 					\begin{compactenum}
