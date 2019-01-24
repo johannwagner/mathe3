@@ -1,4 +1,4 @@
-\documentclass[a4paper, 8pt, landscape]{extarticle}
+\documentclass[a4paper, 9pt, landscape]{extarticle}
 
 \usepackage{multicol}
 \usepackage[german,ngerman]{babel}
@@ -137,20 +137,6 @@
             $(f(g(x)))' = f(g(x))'g(x)'$ \\
 	\section{Integralrechnung}
 	    $e^{Foo}$ u.ä. muss vorher substituiert werden!\\
-%        $\begin{matrix}
-%        \text{Funktion} & \text{Aufleitung} \\
-%        0 & C \\
-%        a & a \cdot x+C \\
-%        x^a, a \neq -1 & \frac{x^{a+1}}{a+1}+C\\
-%        x^{-1}, x \neq 0 & ln(|x|)+C\\
-%        e^x & e^x \\
-%        a^x & \frac{a^x}{ln(a)}+C \\
-%        \frac{1}{x} & \ln|x|+C\\
-%        \ln(x) & x \ln(x)-x+C\\
-%        sin(x) & -cos(x)+C\\
-%        cos(x) & sin(x)+C 
-%        \end{matrix}
-%        $
         \begin{align*}
         	\int 0 dx &= c\\
 	        \int a dx &= ax+c\\
@@ -180,22 +166,20 @@
 	\section{Stochastik}
 	    $\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
     	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
-    	$P: \Omega \rightarrow \mathbb{R}$ ist eine Abbildung, welche jedem Ereignis eine Wahrscheinlichkeit zuordnet.\\
+    	$P: \Omega \rightarrow [0,1]$ ist eine Abbildung, welche jedem Ereignis eine Wahrscheinlichkeit zuordnet.\\
     	Eine Wahrscheinlichkeitsverteilung listet alle möglichen Ausgänge des Zufallsexperiments und ihre Wahrscheinlichkeiten auf.
 	    \subsection{Gesetze/Axiome/...}
 		    \begin{align*}
-		    	P(A) &> 0 \text{ für alle } A \subset \Omega\\
-		    	P(\Omega) &= 1\\
-		    	P(A_1 \cap A_2) &= P(A_1) \cdot P(A_2), A_1 \cap A_2 = \emptyset \\
-		    	P(A_1 \cup A_2) &= P(A_1) + P(A_2), A_1 \cap A_2 = \emptyset \\
-		    	P(\Omega \backslash A) &= 1 - P(A)\\
 		    	P(\emptyset) &= 0\\
-		    	A \subseteq B &\iff P(A) \leq P(B) \\
-		    	P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
-		    	P(A|B) &= \frac{P(B|A)\cdot P(A)}{P(B)} \\
+		    	P(\Omega) &= 1\\
+		    	P(A \cup B) &= P(A) + P(B)-P(A \cap B)\\
+		    	P(A \cap B) &= P(A) \cdot P(B)\\
 		    	P(A\cap B) &= P(B) \cdot P(A|B)\\
 		    	&= P(A) \cdot P(B|A)\\
-		    	P_B(A) &= P(A|B)
+		    	P(B \backslash A) &= P(B) - P(A), A \subseteq B\\
+		    	A \subseteq B &\iff P(A) \leq P(B)\\
+		    	P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
+		    	P(A|B) &= \frac{P(B|A)\cdot P(A)}{P(B)} \\
 	    	\end{align*}
 	    	\subsubsection{Unabhängigkeit}
 	    		Wenn gilt:\\
