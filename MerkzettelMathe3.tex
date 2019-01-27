@@ -76,7 +76,7 @@
             \end{align*}
          \subsection{Logarithmus-Gesetze}
          	\begin{align*}
-		         x &= log_a(y) \Leftrightarrow y = a^x\\
+		         x = log_a(y) &\Leftrightarrow y = a^x\\
 		         log(x) + log(y) &= log(xy)\\
 		         log(x) - log(y) &= log(\frac{x}{y})\\
 		         log_a(x) &= \frac{log_b(x)}{log_b(a)}\\
@@ -93,23 +93,11 @@
             $\displaystyle \frac{a + bi}{c + di} = \frac{ac + bd}{c^2 + d^2} + \frac{cb - ad}{c^2 + d^2}i$
         \subsection{Binominalkoeffizient}
         	$\binom{n}{k}=\frac{n!}{k!(n-k)!}$\\
-        	$
-        	\begin{tabular}{c | c c c c c c }
-        		\diaghead{n}{k} & 0 & 1 & 2 & 3 & 4 & 5\\
-        		\hline
-        		0 & 1 & 0 & 0 & 0 & 0 & 0\\
-        		1 & 1 & 1 & 0 & 0 & 0 & 0\\
-        		2 & 1 & 2 & 1 & 0 & 0 & 0\\
-        		3 & 1 & 3 & 3 & 1 & 0 & 0\\
-        		4 & 1 & 4 & 6 & 4 & 1 & 0\\
-        		5 & 1 & 5 & 10 & 10 & 5 & 1\\
-        	\end{tabular}
-        	$
        	\subsection{Sin-Cos-Tan Tabelle}
         	\begin{tabular}{l c  c  c  c  c  c  c  c  c  c }
-        		$\alpha$ & $0$ & $\frac{1}{6}\pi$ & $\frac{1}{4}\pi$ & $\frac{1}{3}\pi$ & $\frac{1}{2}\pi$\\\hline
+        		$\alpha$ & $0$ & $\frac{1}{6}\pi$ & $\frac{1}{4}\pi$ & $\frac{1}{3}\pi$ & $\frac{1}{2}\pi$\\
         		\rowcolor{gray!10}
-        		$\alpha$ & $0º$ & $30º$ & $45º$ & $60º$ & $90$\\
+        		$\alpha$ & $0º$ & $30º$ & $45º$ & $60º$ & $90º$\\
         		$\sin$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$\\
         		\rowcolor{gray!10}
         		$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$\\
@@ -209,7 +197,11 @@
 	    		&= \int_{a}^{b} w(t)dt
 	    	\end{align*}
 	    \subsection{Formeln}
-		    $E(X)$ = Erwartungswert, $V(X)$ = Varianz, $Cov(X,Y)$ = Kovarianz, $Cor(X,Y)$ = Korrelation
+		    $E(X)$ = Erwartungswert,
+		    $V(X)$ = Varianz,
+		    $Cov(X,Y)$ = Kovarianz,
+		    $Cor(X,Y)$ = Korrelation
+		    
 		    \begin{align*}
 		    	E(X) &= \sum_{x \in X(\Omega)} x \cdot P(X = x)\\
 		    	E(X) &= \int_{-\infty}^{\infty} x \cdot w(x) dx\\
@@ -221,9 +213,9 @@
 		    	&= \left(\int_{-\infty}^{\infty} x^2 w(x) dx \right) - E(X)^2	\\
 		    	Cov(X,Y)&=E((X-E(X))(Y-E(Y))\\
 		    	Cor(X,Y)&=\frac{Cov(X,Y)}{\sqrt{V(X)}\sqrt{V(Y)}}\\
-		    	P(|X|\geq c) &\leq \frac{E(|X|)}{c}\\
-		    	P(|X-E(X)|\geq c)&\leq\frac{V(X)}{c^2}
 		    \end{align*}
+		    Markov: $$P(|X|\geq c) \leq \frac{E(|X|)}{c}$$
+		    Tschebyscheff:$$P(|X-E(X)|\geq c)\leq\frac{V(X)}{c^2}$$
 		    \subsubsection{p-Quantile:}
 		    Sortieren, $n\cdot p$, Einsetzen \& Index suchen, Formel anwenden:\\
 			$\widetilde{X}_p=
@@ -250,7 +242,7 @@
 			    \begin{align*}
 				    P(X = k) &= \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}\\
 				    E(X)&=pn\\
-				    V(X)&=p(1-q)n
+				    V(X)&=p(1-p)n
 			    \end{align*}
 			\subsubsection{Hypergeometrische Verteilung}
 				N = Grundmenge, n = Stichprobe, k = gewünscht, M = gewünschte Eigenschaft\\
@@ -264,35 +256,62 @@
 				    E(X)&=\sum_{k=0}k\frac{\lambda^k}{k!}e^{-\lambda}\\
 				   	V(X)&=\lambda
 			    \end{align*}
-			    Die Poisson-Verteilung kann, wenn $n \ge 50$ und $p \leq 0.1$, eine Binominialverteilung annähren.
+			    Die Poisson-Verteilung kann, wenn $n \ge 50$ und $p \leq 0.1$, eine Binominialverteilung annähren.\\
 			    \begin{align*}
-				    X = B(n, p) \\
-				    \lambda = n \cdot p \\\\
-				    P(X = k) \sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}
+				    X &= B(n, p) \\
+				    \lambda &= n \cdot p \\
+				    P(X = k) &\sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}
 			    \end{align*}
-	    	\subsection{Normalverteilung}
+			\subsubsection{Exponentalverteilung}
+				\begin{align*}
+					P_\lambda(X=x) &= \lambda e^{-\lambda x}\\
+					F(X)&=1-e^{-\lambda x}, \forall x\geq 0\\
+					E(X)&=\frac{1}{\lambda}\\
+					V(X)&=\lambda^{-2}
+				\end{align*}
+	    	\subsubsection{Normalverteilung}
 		    	$N(\mu, \sigma^2)$ ist eine Normalverteilung. Für $\mu = 1$ und $\sigma = 1$ ist es eine Standardnormalverteilung.
 		    	\begin{align*}
 		    		w(x) &= \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\\
 		    		P(a\le x\le b)&= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})\\
+		    		F(X)&=\Phi(X)\\
+		    		\Phi(x)&=\frac{1}{2}(1+erf(\frac{x}{\sqrt2}))\\
+		    		\Phi(-1)&=1-\Phi(x)\\
 		    		E(X)&=\mu\\
 		    		V(X)&=\sigma^2
 		    	\end{align*}
-		    	Für $\Phi$ siehe Standardnormalverteilungstabelle.\\
-		    	Wenn $\Phi(-x)$, dann $1-\Phi(x)$\\
-
+		    	Für $\Phi$ siehe Tabelle.\\
+		  		Quantile der S.N.V.
+		  		\begin{align*}
+		  			\Phi(p)^{-1}=\sqrt2erf^{-1}(2p-1)
+	  			\end{align*}
+	  			
 		    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
-		    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
+		    	$X = N(\mu, \sigma^2)\land Z = N(0,1)\rightarrow \frac{X - \mu}{\sigma}$\medskip
+		    	
+		    	$X_B$ ist binominalverteilt.\par
+		    	Wenn $np(1-p)\ge9$,\par dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$.\medskip
+		    	
 		    	$X_P$ ist possionverteilt. Wenn $\lambda \ge 9$, dann $F_P(x) \sim \Phi\left(\frac{x + 0.5 - \lambda}{\sqrt{\lambda}}\right)$.
 	    	\subsection{Konfidenzintervall}
-		    	$Vertrauensgrad=1-\alpha$
+	    		$a$ = $\frac{\alpha}{2}$-Quantil, $b$ = $(1-\frac{\alpha}{2})$-Quantil, $\alpha\in [0,1]$\\
+	    		$1-\alpha$ = Vertrauensgrad
+	    		\begin{align*}
+		    		\begin{split}
+		    		P(a\leq X\leq b)=F(b)-F(a)\\
+		    			=(1-\frac{\alpha}{2})-\frac{\alpha}{2}=1-\alpha
+		    		\end{split}
+	    		\end{align*}
 		    	\subsubsection{Normalverteilung}
-				    $[\frac{k}{n}-z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}};\frac{k}{n}+z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}}]$\\
-				    z Werte in Normalverteilungstabelle nachschlagen.
+		    		$z_{(1-\frac{\alpha}{2})} = \Phi^{-1}((1-\frac{\alpha}{2}))$\\
+		    		$\overline{X} = $ Schätzer von $E(X)$\\
+		    		$P(|\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}|\leq z)=2\Phi(z)-1$\\
+				    $[\overline{X}-z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}};\overline{X}+z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}}]$\\
+				    Für $z$ siehe Tabelle.
 		    	\subsubsection{T-Verteilung}
 			    	Keine Varianz gegeben. Stichprobe muss vorhanden sein.\\
-				    $\bar{x}=\text{arithmetisches Mittel}=\frac{\sum x}{n}$\\
-				    $\sigma=\sqrt{\frac{\sum(x-\bar{x})^{2}}{n-1}}$\\
+				    $\bar{x}=\text{arithmetisches Mittel}=\frac{1}{n}\sum x$\\
+				    $\sigma=\sqrt{\frac{1}{n-1}\sum(x-\bar{x})^{2}}$\\
 				    $[\bar{x}-t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}};\bar{x}+t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}}]$\\
 				    T Werte in T-Verteilungstabelle nachschlagen.
 	\section{Numerik}
@@ -302,13 +321,17 @@
 			L_i(x) = \prod_{j = 0, j \neq i}^{n-1} \frac{x - x_j}{x_i - x_j}$
 		\subsection{Newton'sches Interpolationspolynom}
 			$n+1$ = Anzahl der Stützstellen\\
-			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + ... + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_{n-1})$
+			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + ... + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_{n-1})$\par
 			Auflösen nach $a$ für die einzelnen Faktoren:
 			\begin{align*}
 				y_0 &= a_0\\
 				y_1 &= a_0 + a_1(x_1 - x_0)	\\
 				y_2 &= a_0 + a_1(x_2 - x_0) + a_2(x_2 - x_0)(x_2 - x_1)
 			\end{align*}
+			\subsection{Taylorpolynom}
+				$a$ = Entwicklungstelle, $n$-te Taylerpolynom\\
+				$$ T_n(x;a) = \sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k$$
+			
 			\subsection{Ausgleichsrechung}
 				A ist gegeben, n=Grad, x=Stützstellen
 				\begin{multicols}{2}
@@ -340,8 +363,8 @@
 			\begin{tabular}{l | c c c c }
 				n & $i=0$ & $i=1$ & $i=2$ & $i=3$ \\\hline
 				1 & $1/2$ & $1/2$ & & \\
-				2 & $1/3$ & $4/3$ & $1/3$ & \\
-				3 & $3/8$ & $9/8$ & $9/8$ & $3/8$
+				2 & $1/6$ & $4/6$ & $1/6$ & \\
+				3 & $1/8$ & $3/8$ & $3/8$ & $1/8$
 			\end{tabular}
 			\begin{align*}
 		        h &= \frac{b-a}{n}\\
@@ -361,7 +384,10 @@
 			\begin{align*}
 				u_1 &= \frac{1}{|a_1|} a_1\\
 				u_i' &= a_i - \sum_{j = 1}^{i-1} <u_j, a_i> \cdot u_j\\
-				u_i &= \frac{u_i'}{|u_i'|}\\\\
+				u_i &= \frac{u_i'}{|u_i'|}
+			\end{align*}
+			
+			\begin{align*}
 				Q &= (u_1, u_2, ..., u_n)\\
 				Q^{-1}\cdot A &= R
 			\end{align*}
