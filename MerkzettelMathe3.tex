@@ -140,23 +140,35 @@
 	        \int x^{-1} dx &= \ln(|x|)+c\\
 	        \int \ln (x) dx &= x\ln(x)-x +c\\
 	        \int sin(x) dx &= -cos(x)+c\\
-	        \int cos(x) dx &= sin(x)+c\\
+	        \int cos(x) dx &= sin(x)+c
+        \end{align*}
+        \begin{align*}
+        	\int cf(x) dx &= c \int f(x) dx\\
+        	\int (f(x) + g(x)) dx &= \int f(x) dx + \int g(x) dx
         \end{align*}
         \subsection{Partielle Integration}
 	        Wenn $u$ und $v$ zwei differenzierbare Funktionen sind, dann gilt: \\
 	        $\int u' \cdot v = (u \cdot v) - \int u \cdot v'$
         \subsection{Substitutionsregel}
-	        $\int f(g(x)) \cdot g'(x) dx = \int f(y) dy$
+	        $\int f(x) dx = \int f(g(u)) \cdot g'(u) du$
 	        \begin{align*}
-	            \int \frac{1}{5x - 7} dx &= ?\\
-	            u &= 5x-7\\
-	            u' &= \frac{du}{dx} \\
-	            5 &= \frac{du}{dx} \\
-	            \frac{du}{5} &= dx  \\
-	            \int \frac{1 \cdot du}{u \cdot 5} &= \frac{1}{5} \int \frac{1}{u} du \\
-                &= \frac{1}{5} ln(u) \\
-                &= \frac{1}{5} ln(5x-7)
+	            F(x) &= \int e^{2x} dx\\
+	            2x &= u\\
+	            x &= \frac{1}{2}u\\
+	            g(u) &= \frac{1}{2}u\\
+	            g'(u) &= \frac{1}{2}\\
+	            dx &= g'(u)du
 	        \end{align*}
+	        Substitution:
+	        \begin{align*}
+	        	F(u) &= \int e^u \frac{1}{2} du\\
+	        	F(u) &= \frac{1}{2} e^u+c\\
+	        \end{align*}
+	        Resubstitution:
+	        \begin{align*}
+	    		F(x) &= \frac{1}{2} e^{2x}+c\\
+	        \end{align*}
+	        
 	\section{Stochastik}
 	    $\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
     	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
@@ -378,7 +390,7 @@
 				\item[2.] $x_{n+1}=x_{n}-\frac{x_{n}-x_{n-1}}{f(x_{n})-f(x_{n-1})}\cdot f(x_{n})$
 			\end{compactitem}
 		\subsection{QR-Zerlegung}
-			Seien $A \in \mathbb{R}^{mxn}$ mit $m \ge n$ und $rg(A) = n$.\\
+			Seien $A \in \mathbb{R}^{m\times n}$ mit $m \ge n$ und $rg(A) = n$.\\
 			Es seien $a_1, a_2, ..., a_n \in \mathbb{R}^m$ die Spaltenvektoren von $A$. \\
 			Die Vektoren $u_1, u_2, ..., u_n \in \mathbb{R}^m$ sind die Gram-Schmidt orthogonalisierten Vektoren.
 			\begin{align*}
