@@ -1,60 +1,62 @@
-\documentclass[a4paper, 10pt, landscape]{article}
+\documentclass[a4paper, 8pt, landscape]{extarticle}
 
 \usepackage{multicol}
 \usepackage[german,ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+
 \usepackage{fancyhdr}
+
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{geometry}
+
+\usepackage{makecell}
+
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\definecolor{lightergray}{gray}{0.95}
+\definecolor{lightgray}{gray}{0.9}
 \usepackage{paralist}
-\usepackage{sfmath}
+\setlength{\parindent}{0em}%
+
 \usepackage[compact]{titlesec}
 \titleformat{\section}
-{\normalfont\normalsize\bfseries}{\thesection}{0.5em}{}
+{\scshape\Large}{\thesection}{0.5em}{}
 \titleformat{\subsection}
-{\normalfont\bfseries}{\thesubsection}{0.5em}{}
+{\scshape\large}{\thesubsection}{0.5em}{}
 \titleformat{\subsubsection}
-{\normalfont\bfseries}{\thesubsubsection}{0.5em}{}
+{\scshape}{\thesubsubsection}{0.5em}{}
 \titlespacing{\section}{0pt}{1.5ex}{0ex}
 \titlespacing{\subsection}{0pt}{1ex}{0ex}
 \titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 \setlength\parindent{0pt}
-\geometry{
-    left=0.5cm,
-    right=0.5cm,
-    top=0.5cm,
-    bottom=0.5cm,
-    bindingoffset=5mm
-}
-%\setlength{\columnseprule}{0.4pt}
-\author{Johann Wagner, Jasper Orschulko}
 
-%\pagestyle{fancy}
+
+\author{Johann Wagner, Jasper Orschulko}
 
 \lhead{Mathe 3 - Klausur Pott}
 \rhead{\thepage}
 \cfoot{Johann Wagner, Jasper Orschulko}
 \rfoot{\thepage}
 
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-\renewcommand{\familydefault}{\sfdefault}
-
-\newcommand{\bspVec}{\ensuremath{\begin{pmatrix} x_1\\ \vdots \\ x_n \end{pmatrix}}}
 \newcommand{\limTo}[1]{ \lim\limits_{x \rightarrow #1}}
 \newcommand{\limFromTo}[2]{ \lim\limits_{#2 \rightarrow #1}}
 
-\newenvironment{alignTab}{$\begin{aligned}}{\end{aligned}$}
+\let\oldint\int
+\renewcommand{\int}{\ensuremath{\textstyle\oldint}}
+
+\let\oldsum\sum
+\renewcommand{\sum}{\ensuremath{\textstyle\oldsum}}
 
 \title{Mathe III - Klausurhilfe}
 
 \begin{document}
-    \begin{multicols}{5}   
-	\begin{small}
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+
+    \begin{multicols*}{5}
+   	\raggedcolumns
 	\section{Allgemeines}
 		\subsection{Binomische Formeln}
 			\begin{align*}
@@ -63,112 +65,133 @@
 			    a^{2}-b^{2} &= (a+b)\cdot(a-b)
 			\end{align*}
 		\subsection{Potenzgesetze}
-			\begin{multicols}{2}
-	            $a^m \cdot a^n = a^{m+n}$\\
-	            $a^n \cdot b^n = (ab)^n$\\
-	            $\frac{a^n}{a^m} = a^{n-m}$\\
-	            $\frac{a^n}{b^n} = \left(\frac{a}{b}\right)^n$\\
-	            $(a^n)^m = a^{mn}$\\
-	            $a^{-n} = \frac{1}{a^n}$\\
-	            $log_b(1) = 0$
-            \end{multicols}
+			\begin{align*}
+	            a^m \cdot a^n &= a^{m+n}\\
+	            a^n \cdot b^n &= (ab)^n\\
+	            \frac{a^n}{a^m} &= a^{n-m}\\
+	            \frac{a^n}{b^n} &= \left(\frac{a}{b}\right)^n\\
+	            (a^n)^m &= a^{mn}\\
+	            a^{-n} &= \frac{1}{a^n}\\
+	            log_b(1) &= 0
+            \end{align*}
          \subsection{Logarithmus-Gesetze}
-		     \noindent
-	         $x = log_a(y) \Leftrightarrow y = a^x$\\
-	         $log(x) + log(y) = log(xy)$\\
-	         $log(x) - log(y) = log(\frac{x}{y})$\\
-	         $log_a(x) = \frac{log_b(x)}{log_b(a)}$  \\
-	         $log(u^r) = r \cdot ln(u)$
-	         \begin{multicols}{2}
-		         \noindent
-		         $ln(1) = 0$ \\
-		         $ln(e) = 1$ \\
-		         $ln(e^x) = x$ \\
-		         $e^{ln(x)} = x$
-	         \end{multicols}
+         	\begin{align*}
+		         x = log_a(y) &\Leftrightarrow y = a^x\\
+		         log(x) + log(y) &= log(xy)\\
+		         log(x) - log(y) &= log(\frac{x}{y})\\
+		         log_a(x) &= \frac{log_b(x)}{log_b(a)}\\
+		         log(u^r) &= r \cdot ln(u)\\
+		         ln(1) &= 0\\
+		         ln(e) &= 1\\
+		         ln(e^x) &= x\\
+		         e^{ln(x)} &= x
+		    \end{align*}
         \subsection{Komplexe Zahlen}
 	        $(a + bi) \pm (c + di) = (a \pm c) + (c \pm d)i$\\
-	        $(a + bi) \cdot (c + di) = (ac - bd) + (ad + bc)i$\\
-	        
+	        $(a + bi) * (c + di) = (ac - bd) + (ad + bc)i$\\
+
             $\displaystyle \frac{a + bi}{c + di} = \frac{ac + bd}{c^2 + d^2} + \frac{cb - ad}{c^2 + d^2}i$
+        \subsection{Binominalkoeffizient}
+        	$\binom{n}{k}=\frac{n!}{k!(n-k)!}$\\
+       	\subsection{Sin-Cos-Tan Tabelle}
+        	\begin{tabular}{l c  c  c  c  c  c  c  c  c  c }
+        		$\alpha$ & $0$ & $\frac{1}{6}\pi$ & $\frac{1}{4}\pi$ & $\frac{1}{3}\pi$ & $\frac{1}{2}\pi$\\
+        		\rowcolor{gray!10}
+        		$\alpha$ & $0º$ & $30º$ & $45º$ & $60º$ & $90º$\\
+        		$\sin$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$\\
+        		\rowcolor{gray!10}
+        		$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$\\
+        		$\tan$ & $0$ & $\frac{\sqrt{3}}{3}$ & $1$ & $\sqrt{3}$ &$\pm\infty$
+        	\end{tabular}
+    \section{Ableitung}
+        \subsection{typische Ableitungen}
+           	\begin{align*}
+           	(x)' &= 1 \\
+           	(ax)' &= a \\
+           	(ax^2)' &= 2ax \\
+           	(\frac{1}{x})' &= -\frac{1}{x^2} \\
+           	(\sqrt[]{x})' &= \frac{1}{2\sqrt[]{x}} \\
+           	(ax^b)' &= abx^{b-1} \\
+           	(e^x)' &= e^x  \\
+           	(e^{ax})' &= ae^{ax}  \\
+           	(a^x)' &= a^x*log(a)  \\
+           	(ln(x))' &= \frac{1}{x} \\
+           	(\sin x) &= \cos x \\
+           	(\cos x) &= -\sin x \\
+           	(\tan x) &= \frac{1}{(\cos x)^2}
+           	\end{align*}
+        \subsection{Verknüpfungsfunktionen}
+            \subsubsection{Summenregel}
+            $(f(x) + g(x))' = f(x)' + g(x)'$  \\
+            \subsubsection{Produktregel}
+            $(f(x)g(x))' = f(x)'g(x)+g(x)'f(x)$  \\
+            \subsubsection{Quotientenregel}
+            $(\frac{f(x)}{g(x)})' = \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2}$ \\
+            \subsubsection{Kettenregel}
+            $(f(g(x)))' = f(g(x))'g(x)'$ \\
 	\section{Integralrechnung}
 	    $e^{Foo}$ u.ä. muss vorher substituiert werden!\\
-        $\begin{matrix}
-        \text{Funktion} & \text{Aufleitung} \\
-        0 & C \\
-        a & a \cdot x+C \\
-        x^a, a \neq -1 & \frac{x^{a+1}}{a+1}+C\\
-        x^{-1}, x \neq 0 & ln(|x|)+C\\
-        e^x & e^x+C\\
-        a^x & \frac{a^x}{ln(a)}+C \\
-        \frac{1}{x} & \ln|x|+C\\
-        \ln(x) & x \ln(x)-x+C\\
-        sin(x) & -cos(x)+C\\
-        cos(x) & sin(x)+C\\
-        \frac{1}{1+y^2} & arctan(y) + c
-        \end{matrix}
-        $
+        \begin{align*}
+        	\int 0 dx &= c\\
+	        \int a dx &= ax+c\\
+	        \int x^a dx &= \frac{x^{a+1}}{a+1}+c\\
+	        \int e^x dx &= e^x\\
+	        \int a^x dx &= \frac{a^x}{\ln(a)}+c\\
+	        \int x^{-1} dx &= \ln(|x|)+c\\
+	        \int \ln (x) dx &= x\ln(x)-x +c\\
+	        \int sin(x) dx &= -cos(x)+c\\
+	        \int cos(x) dx &= sin(x)+c
+        \end{align*}
+        \begin{align*}
+        	\int cf(x) dx &= c \int f(x) dx\\
+        	\int (f(x) + g(x)) dx &= \int f(x) dx + \int g(x) dx
+        \end{align*}
         \subsection{Partielle Integration}
 	        Wenn $u$ und $v$ zwei differenzierbare Funktionen sind, dann gilt: \\
 	        $\int u' \cdot v = (u \cdot v) - \int u \cdot v'$
         \subsection{Substitutionsregel}
-	        $\int f(g(x)) \cdot g'(x) dx = \int f(y) dy$
+	        $\int f(x) dx = \int f(g(u)) \cdot g'(u) du$
 	        \begin{align*}
-	            \int \frac{1}{5x - 7} dx &= ?\\
-	            u &= 5x-7\\
-	            u' &= \frac{du}{dx} \\
-	            5 &= \frac{du}{dx} \\   
-	            \frac{du}{5} &= dx  \\
-	            \int \frac{1 \cdot du}{u \cdot 5} &= \frac{1}{5} \int \frac{1}{u} du \\
-                &= \frac{1}{5} ln(u) \\
-                &= \frac{1}{5} ln(5x-7)
+	            F(x) &= \int e^{2x} dx\\
+	            2x &= u\\
+	            x &= \frac{1}{2}u\\
+	            g(u) &= \frac{1}{2}u\\
+	            g'(u) &= \frac{1}{2}\\
+	            dx &= g'(u)du
 	        \end{align*}
-	\section{Ableitung}
-		\subsection{typische Ableitungen}
-			\begin{multicols}{2}		
-				$(x)' = 1$ \\
-				$(ax)' = a$ \\
-				$(ax^2)' = 2ax$ \\
-				$(\frac{1}{x})' = -\frac{1}{x^2}$ \\
-				$(\sqrt[]{x})' = \frac{1}{2\sqrt[]{x}}$ \\
-				$(ax^b)' = abx^{b-1}$ \\
-				$(e^x)' = e^x $ \\
-				$(e^{ax})' = ae^{ax} $ \\
-				$(a^x)' = a^x*log(a) $ \\
-				$ln(x)' = \frac{1}{x}$ \\
-				$(\sin x) = \cos x$ \\
-				$(\cos x) = -\sin x$ \\
-				$(\tan x) = \frac{1}{(\cos x)^2}$
-			\end{multicols}
-		\subsection{Verknüpfungsfunktionen}
-			Summenregel:\\
-			$(f(x) + g(x))' = f(x)' + g(x)'$  \\ 
-			Produktregel:\\
-			$(f(x)g(x))' = f(x)'g(x)+g(x)'f(x)$  \\
-			Quotientenregel:\\
-			$(\frac{f(x)}{g(x)})' = \frac{f(x)'g(x)-g(x)'f(x)}{g(x)^2}$ \\
-			Kettenregel:\\
-			$(f(g(x)))' = f(g(x))'g(x)'$ \\
+	        Substitution:
+	        \begin{align*}
+	        	F(u) &= \int e^u \frac{1}{2} du\\
+	        	F(u) &= \frac{1}{2} e^u+c\\
+	        \end{align*}
+	        Resubstitution:
+	        \begin{align*}
+	    		F(x) &= \frac{1}{2} e^{2x}+c\\
+	        \end{align*}
+	        
 	\section{Stochastik}
 	    $\Omega = \{ ... \}$ beschreibt den Ereignisraum und somit die Menge aller möglichen Ausgänge des Zufallsexperiments.\\
     	$A, B, C, ... \subseteq \Omega$ beschrieben ein Ereignisse des Zufallsexperimentes.\\
-    	$P: \Omega \rightarrow \mathbb{R}$ ist eine Abbildung, welche jedem Ereignis eine Wahrscheinlichkeit zuordnet.\\
+    	$P: \Omega \rightarrow [0,1]$ ist eine Abbildung, welche jedem Ereignis eine Wahrscheinlichkeit zuordnet.\\
     	Eine Wahrscheinlichkeitsverteilung listet alle möglichen Ausgänge des Zufallsexperiments und ihre Wahrscheinlichkeiten auf.
 	    \subsection{Gesetze/Axiome/...}
 		    \begin{align*}
-		    	P(A) &> 0 \text{ für alle } A \subset \Omega\\
-		    	P(\Omega) &= 1\\
-		    	P(A_1 \cap A_2) &= P(A_1) \cdot P(A_2), A_1 \cap A_2 = \emptyset \\
-		    	P(A_1 \cup A_2) &= P(A_1) + P(A_2), A_1 \cap A_2 = \emptyset \\
-		    	P(\Omega \backslash A) &= 1 - P(A)\\
 		    	P(\emptyset) &= 0\\
-		    	A \subseteq B &\iff P(A) \leq P(B) \\
-		    	P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
-		    	&= \frac{P(B|A)\cdot P(A)}{P(B)} \\
+		    	P(\Omega) &= 1\\
+		    	P(A \cup B) &= P(A) + P(B)-P(A \cap B)\\
+		    	P(A \cap B) &= P(A) \cdot P(B)\\
 		    	P(A\cap B) &= P(B) \cdot P(A|B)\\
 		    	&= P(A) \cdot P(B|A)\\
-		    	P_B(A) &= P(A|B)
+		    	P(B \backslash A) &= P(B) - P(A), A \subseteq B\\
+		    	A \subseteq B &\iff P(A) \leq P(B)\\
+		    	P(A|B) &= \frac{P(A \cap B)}{P(B)} \\
+		    	P(A|B) &= \frac{P(B|A)\cdot P(A)}{P(B)} \\
 	    	\end{align*}
+	    	\subsubsection{Unabhängigkeit}
+	    		Wenn gilt:\\
+	    		$P(A|B)=P(A)$ so wie $P(B|A)=P(B)$\\
+	    		$Cov(A,B)=0$
+
 		\subsection{Dichtefunktion}
 		    $w: \mathbb{R} \rightarrow \mathbb{R}$ ist eine integrierbare, nicht negative Funktion. \\
 	    	Es gilt: $\int_{-\infty}^{x} w(t) dt = F(x) = P(X \leq x)$
@@ -176,6 +199,7 @@
 	    	$F: \mathbb{R} \rightarrow \left[0,1\right]$ heißt Verteilungsfunktion. Verteilungsfunktion ist Aufleitung der Dichtefunktion.\\
 	    	F ist rechtsseitig stetig und es gilt:
 	    	\begin{align*}
+	    		P(X\leq x) = F(x)\\`
 	    		\limFromTo{-\infty}{x} F(x) &= 0\\
 	    		\limFromTo{\infty}{x} F(x) &= 1\\
 	    		P(X \geq x) &= 1 - P(X \leq x) \\
@@ -185,16 +209,26 @@
 	    		&= \int_{a}^{b} w(t)dt
 	    	\end{align*}
 	    \subsection{Formeln}
-		    E = Erwartungswert, V = Varianz
+		    $E(X)$ = Erwartungswert,
+		    $V(X)$ = Varianz,
+		    $Cov(X,Y)$ = Kovarianz,
+		    $Cor(X,Y)$ = Korrelation
+		    
 		    \begin{align*}
 		    	E(X) &= \sum_{x \in X(\Omega)} x \cdot P(X = x)\\
 		    	E(X) &= \int_{-\infty}^{\infty} x \cdot w(x) dx\\
-		    	V(X) &= \sum_{x \in X(\Omega)} (x - E(X))^2 \cdot P(X = x)\\
+		    	V(X) &= E((X-E(X))^2)\\
+		    	&= \sum_{x \in X(\Omega)} (x - E(X))^2 \cdot P(X = x)\\
+		    	&= E(X^2)-E(X)^2\\
 			    &= \left(\sum_{x \in X(\Omega)} x^2 \cdot P(X = x)\right) - E(X)^2\\
 		    	V(X) &= \int_{-\infty}^{\infty} (x - E(X))^2 \cdot w(x) dx\\
-		    	&= \left(\int_{-\infty}^{\infty} x^2 w(x) dx \right) - E(X)^2	 
+		    	&= \left(\int_{-\infty}^{\infty} x^2 w(x) dx \right) - E(X)^2	\\
+		    	Cov(X,Y)&=E((X-E(X))(Y-E(Y))\\
+		    	Cor(X,Y)&=\frac{Cov(X,Y)}{\sqrt{V(X)}\sqrt{V(Y)}}\\
 		    \end{align*}
-		    \textbf{p-Quantile:}\\
+		    Markov: $$P(|X|\geq c) \leq \frac{E(|X|)}{c}$$
+		    Tschebyscheff:$$P(|X-E(X)|\geq c)\leq\frac{V(X)}{c^2}$$
+		    \subsubsection{p-Quantile:}
 		    Sortieren, $n\cdot p$, Einsetzen \& Index suchen, Formel anwenden:\\
 			$\widetilde{X}_p=
 			\begin{cases}
@@ -202,7 +236,7 @@
 			x_{\lceil{np}\rceil} & \text{falls } n \text{ nicht ganzz.}
 			\end{cases}$
 	    \subsection{Verschiedene Verteilungen}
-			\subsubsection{Gleichverteilung}	
+			\subsubsection{Gleichverteilung}
 				Die Gleichverteilung ist die einfachste Verteilung. Jede Möglichkeit hat die gleiche Wahrscheinlichkeit. Ein Würfel ist gleichverteilt mit $P(x_i) = \frac{1}{6}$.\\
 				\begin{align*}
 					P(X = x_i) = \frac{1}{N}
@@ -218,8 +252,9 @@
 				\end{align*}
 	    		Es ist ein \textbf{LaPlace}-Experiment, wenn $p = q$ gilt.
 			    \begin{align*}
-				    P(X = k) &= {n \choose k} \cdot p^k \cdot (1-p)^{n-k}\\
-				    {n \choose k} &= \frac{n!}{k! (n-k)!}
+				    P(X = k) &= \binom{n}{k} \cdot p^k \cdot (1-p)^{n-k}\\
+				    E(X)&=pn\\
+				    V(X)&=p(1-p)n
 			    \end{align*}
 			\subsubsection{Hypergeometrische Verteilung}
 				N = Grundmenge, n = Stichprobe, k = gewünscht, M = gewünschte Eigenschaft\\
@@ -227,46 +262,68 @@
 		    \subsubsection{Poisson-Verteilung}
 			    Die Poisson-Verteilung eignet sich für seltene Ereignisse in einem fest definierten Zeitraum.
 			    \begin{align*}
-				    X = P(\lambda)\\
-				    \Omega = \{x \in \mathbb{R} | x \geq 0\}\\
-				    P(X = k) = \frac{\lambda^k \cdot e^{-\lambda}}{k!}	
+				    X &= P(\lambda)\\
+				    \Omega &= \{x \in \mathbb{R} | x \geq 0\}\\
+				    P(X = k) &= \frac{\lambda^k}{k!} e^{-\lambda}\\
+				    E(X)&=\sum_{k=0}k\frac{\lambda^k}{k!}e^{-\lambda}\\
+				   	V(X)&=\lambda
 			    \end{align*}
-			    Die Poisson-Verteilung kann, wenn $n \ge 50$ und $p \leq 0.1$, eine Binominialverteilung annähren.
+			    Die Poisson-Verteilung kann, wenn $n \ge 50$ und $p \leq 0.1$, eine Binominialverteilung annähren.\\
 			    \begin{align*}
-				    X = B(n, p) \\
-				    \lambda = n \cdot p \\\\
-				    P(X = k) \sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}	
+				    X &= B(n, p) \\
+				    \lambda &= n \cdot p \\
+				    P(X = k) &\sim \frac{\lambda^k \cdot e^{-\lambda}}{k!}
 			    \end{align*}
-	    	\subsection{Normalverteilung}
+			\subsubsection{Exponentalverteilung}
+				\begin{align*}
+					P_\lambda(X=x) &= \lambda e^{-\lambda x}\\
+					F(X)&=1-e^{-\lambda x}, \forall x\geq 0\\
+					E(X)&=\frac{1}{\lambda}\\
+					V(X)&=\lambda^{-2}
+				\end{align*}
+	    	\subsubsection{Normalverteilung}
 		    	$N(\mu, \sigma^2)$ ist eine Normalverteilung. Für $\mu = 1$ und $\sigma = 1$ ist es eine Standardnormalverteilung.
 		    	\begin{align*}
 		    		w(x) &= \frac{1}{\sigma \sqrt{2 \pi}} e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}\\
-		    		P(a\le x\le b)&= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})
+		    		P(a\le x\le b)&= \Phi(\frac{b-\mu}{\sigma})-\Phi(\frac{a-\mu}{\sigma})\\
+		    		F(X)&=\Phi(X)\\
+		    		\Phi(x)&=\frac{1}{2}(1+erf(\frac{x}{\sqrt2}))\\
+		    		\Phi(-1)&=1-\Phi(x)\\
+		    		E(X)&=\mu\\
+		    		V(X)&=\sigma^2
 		    	\end{align*}
-		    	Für $\Phi$ siehe Standardnormalverteilungstabelle.\\
-		    	Wenn $\Phi(-x)$, dann $1-\Phi(x)$\\
-	    	
+		    	Für $\Phi$ siehe Tabelle.\\
+		  		Quantile der S.N.V.
+		  		\begin{align*}
+		  			\Phi(p)^{-1}=\sqrt2erf^{-1}(2p-1)
+	  			\end{align*}
+	  			
 		    	Wenn gilt, dass $X = N(\mu, \sigma^2)$ und $Z = N(0,1)$, dann folgt $\frac{X - \mu}{\sigma}$. \\
-		    	$X_B$ ist binominalverteilt. Wenn $np(1-p)\ge9$, dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$. \\
+		    	$X = N(\mu, \sigma^2)\land Z = N(0,1)\rightarrow \frac{X - \mu}{\sigma}$\medskip
+		    	
+		    	$X_B$ ist binominalverteilt.\par
+		    	Wenn $np(1-p)\ge9$,\par dann $F_B(x) \sim \Phi\left(\frac{x + 0.5 - np}{\sqrt{np(1-p)}}\right)$.\medskip
+		    	
 		    	$X_P$ ist possionverteilt. Wenn $\lambda \ge 9$, dann $F_P(x) \sim \Phi\left(\frac{x + 0.5 - \lambda}{\sqrt{\lambda}}\right)$.
-	    	
-	    	\subsection{Tabelle Erwartungswert/Varianz}
-		    	\begin{tabular}{l|c|c}
-		    		&  $E(x)$ & $V(x)$\\ \hline
-		    		$B(n,p)$ & $n\cdot p$ & $n\cdot p(1-p)$\\\hline
-		    		$H(n,M,N)$ & $n\cdot\frac{M}{N}$ & $n\cdot\frac{M}{N}(1-\frac{M}{N})\frac{N-n}{N-1}$\\\hline
-		    		$P(\lambda)$ & $\lambda$ & $\lambda$\\\hline
-		    		$N(x)$ & $\mu$ & $\sigma^2$
-		    	\end{tabular}
 	    	\subsection{Konfidenzintervall}
-		    	$Vertrauensgrad=1-\alpha$
+	    		$a$ = $\frac{\alpha}{2}$-Quantil, $b$ = $(1-\frac{\alpha}{2})$-Quantil, $\alpha\in [0,1]$\\
+	    		$1-\alpha$ = Vertrauensgrad
+	    		\begin{align*}
+		    		\begin{split}
+		    		P(a\leq X\leq b)=F(b)-F(a)\\
+		    			=(1-\frac{\alpha}{2})-\frac{\alpha}{2}=1-\alpha
+		    		\end{split}
+	    		\end{align*}
 		    	\subsubsection{Normalverteilung}
-				    $[\frac{k}{n}-z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}};\frac{k}{n}+z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}}]$\\
-				    z Werte in Normalverteilungstabelle nachschlagen. 
+		    		$z_{(1-\frac{\alpha}{2})} = \Phi^{-1}((1-\frac{\alpha}{2}))$\\
+		    		$\overline{X} = $ Schätzer von $E(X)$\\
+		    		$P(|\frac{\overline{X}-\mu}{\sigma/\sqrt{n}}|\leq z)=2\Phi(z)-1$\\
+				    $[\overline{X}-z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}};\overline{X}+z_{(1-\frac{\alpha}{2})}\frac{\sigma}{\sqrt{n}}]$\\
+				    Für $z$ siehe Tabelle.
 		    	\subsubsection{T-Verteilung}
 			    	Keine Varianz gegeben. Stichprobe muss vorhanden sein.\\
-				    $\bar{x}=\text{arithmetisches Mittel}=\frac{\sum x}{n}$\\
-				    $\sigma=\sqrt{\frac{\sum(x-\bar{x})^{2}}{n-1}}$\\
+				    $\bar{x}=\text{arithmetisches Mittel}=\frac{1}{n}\sum x$\\
+				    $\sigma=\sqrt{\frac{1}{n-1}\sum(x-\bar{x})^{2}}$\\
 				    $[\bar{x}-t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}};\bar{x}+t_{(1-\frac{\alpha}{2};n-1)}\frac{\sigma}{\sqrt{n}}]$\\
 				    T Werte in T-Verteilungstabelle nachschlagen.
 	\section{Numerik}
@@ -276,47 +333,50 @@
 			L_i(x) = \prod_{j = 0, j \neq i}^{n-1} \frac{x - x_j}{x_i - x_j}$
 		\subsection{Newton'sches Interpolationspolynom}
 			$n+1$ = Anzahl der Stützstellen\\
-			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + ... + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_{n-1})$
+			$p(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + ... + a_n(x-x_0)(x - x_1)\cdot ... \cdot (x - x_{n-1})$\par
 			Auflösen nach $a$ für die einzelnen Faktoren:
 			\begin{align*}
 				y_0 &= a_0\\
 				y_1 &= a_0 + a_1(x_1 - x_0)	\\
 				y_2 &= a_0 + a_1(x_2 - x_0) + a_2(x_2 - x_0)(x_2 - x_1)
 			\end{align*}
+			\subsection{Taylorpolynom}
+				$a$ = Entwicklungstelle, $n$-te Taylerpolynom\\
+				$$ T_n(x;a) = \sum_{k=0}^{n}\frac{f^{(k)}(a)}{k!}(x-a)^k$$
+			
 			\subsection{Ausgleichsrechung}
 				A ist gegeben, n=Grad, x=Stützstellen
 				\begin{multicols}{2}
 					$C=\begin{pmatrix}
 						c_0\\
 						c_1\\
-						...\\
+						\vdots\\
 						c_n
 					\end{pmatrix}
 					Y=\begin{pmatrix}
 						f(x_0)\\
 						f(x_1)\\
-						...\\
+						\vdots\\
 						f(x_n)
 					\end{pmatrix}$
 				\end{multicols}
 					$\Rightarrow A^T\cdot A\cdot c=A^T\cdot y$\\
 					Gleichungssystem lösen
-				
-				
+
+
 			\subsubsection{Newton-Verfahren für Nullstellen}
 				Voraussetzung: Muss stetig sein (hinschreiben!)\\
 				stetig = an jeder Stelle definiert\\
-				Allgemeine Formel: $x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}$ 
+				Allgemeine Formel: $x_{n+1}=x_{n}-\frac{f(x_{n})}{f'(x_{n})}$
 	    \subsection{Newton-Cotes-Formeln}
    			a = untere Grenze\\
 			b = obere Grenze\\
 			$\alpha_{i,n}$ Tabelle:\\
 			\begin{tabular}{l | c c c c }
-				\noindent
 				n & $i=0$ & $i=1$ & $i=2$ & $i=3$ \\\hline
 				1 & $1/2$ & $1/2$ & & \\
-				2 & $1/3$ & $4/3$ & $1/3$ & \\
-				3 & $3/8$ & $9/8$ & $9/8$ & $3/8$
+				2 & $1/6$ & $4/6$ & $1/6$ & \\
+				3 & $1/8$ & $3/8$ & $3/8$ & $1/8$
 			\end{tabular}
 			\begin{align*}
 		        h &= \frac{b-a}{n}\\
@@ -330,15 +390,18 @@
 				\item[2.] $x_{n+1}=x_{n}-\frac{x_{n}-x_{n-1}}{f(x_{n})-f(x_{n-1})}\cdot f(x_{n})$
 			\end{compactitem}
 		\subsection{QR-Zerlegung}
-			Seien $A \in \mathbb{R}^{mxn}$ mit $m \ge n$ und $rg(A) = n$.\\
+			Seien $A \in \mathbb{R}^{m\times n}$ mit $m \ge n$ und $rg(A) = n$.\\
 			Es seien $a_1, a_2, ..., a_n \in \mathbb{R}^m$ die Spaltenvektoren von $A$. \\
-			Die Vektoren $u_1, u_2, ..., u_n \in \mathbb{R}^m$ sind die Gram-Schmidt orthogonalisierten Vektoren. 
+			Die Vektoren $u_1, u_2, ..., u_n \in \mathbb{R}^m$ sind die Gram-Schmidt orthogonalisierten Vektoren.
 			\begin{align*}
 				u_1 &= \frac{1}{|a_1|} a_1\\
 				u_i' &= a_i - \sum_{j = 1}^{i-1} <u_j, a_i> \cdot u_j\\
-				u_i &= \frac{u_i'}{|u_i'|}\\\\	 
+				u_i &= \frac{u_i'}{|u_i'|}
+			\end{align*}
+			
+			\begin{align*}
 				Q &= (u_1, u_2, ..., u_n)\\
-				Q^{-1}\cdot A &= R 
+				Q^{-1}\cdot A &= R
 			\end{align*}
 		\subsection{LU-Zerlegung}
 			%Fancy shit: https://www.youtube.com/watch?v=Gn2euB6dBQA
@@ -346,12 +409,12 @@
 				\begin{compactitem}
 				\item[Step 1:] L1 Matrix aufbauen:\\
 				$x \in \{2,3\}$\\
-				$L_{x,1}=-\frac{A(x,1)}{A(1,1)}$ 
+				$L_{x,1}=-\frac{A(x,1)}{A(1,1)}$
 				\item[Step 2:] $\tilde{A}=L1\cdot A$
 				\item[Step 3:] L2 Matrix aufbauen:\\
 				$L_{3,2}=-\frac{\tilde{A}(3,2)}{\tilde{A}(2,2)}$
 				\item[Step 4:] $U=L2\cdot\tilde{A}$
-				\item[Step 5:] $L=L_1^{-1}\cdot L_2^{-1}$ (=Vorzeichen außerhalb Diagonale ändern.) 	
+				\item[Step 5:] $L=L_1^{-1}\cdot L_2^{-1}$ (=Vorzeichen außerhalb Diagonale ändern.)
 				\end{compactitem}
 			\subsubsection{Lösung von PLUx = b}
 				Wir berechnen zunächst ein y, welches ein Zwischenergebnis ist. Die Schritte sind sehr einfach, da L und U Dreiecksmatrizen sind.
@@ -372,14 +435,14 @@
 				a_{n1}\cdot x_1+\dotsb+a_{nn}\cdot x_n&=&b_n\\
 			\end{matrix}
 			$
-	
+
 			Um dieses zu lösen, wird die $i$-te Gleichung nach der $i$-ten Variablen $x_i$ aufgelöst,\\
 			$x_i^{(m+1)}:=\frac1{a_{ii}}\left(b_i-\sum_{j\not=i} a_{ij}\cdot x_j^{(m)}\right), \, i=1,\dotsc,n$\\
 			und diese Ersetzung, ausgehend von einem Startvektor $x^{(0)}$, iterativ wiederholt.
 		\subsection{Cholesky-Zerlegung}
 			Voraussetzung: symmetrische Matrix(alles außer Hauptdiagonale gespiegelt) \& positiv definit($A_{1,1}>0, det(A)>0$).\\
 			$A=GG^{T}$\\
-			
+
 			\begin{tiny}
 				$A=\begin{pmatrix}
 					g_{11}^{2} & g_{11}g_{21} & g_{11}g_{31}\\
@@ -399,13 +462,6 @@
 					\end{pmatrix}$
 				\end{multicols}
 			\end{tiny}
-		\subsection{Matrixnormen}
-			\begin{tiny}
-				\begin{align*}
-					\left|\bspVec\right| &= \sqrt{x_1^2 + ... + x_n^2}\\
-					&... 
-				\end{align*}
-			\end{tiny}
 	\section{Differentialgleichung}
 		Nett-to-know: $y'=\frac{d}{dx}\cdot y, y''= \frac{d^2}{dx^2}\cdot y$
 		\subsection{DGL 1. Ordnung}
@@ -414,15 +470,15 @@
 				Wenden wir an wenn wir die Variablen nicht geteilt bekommen:\\
 				$y'+b(x)\cdot y=0$ für $y_1$\\
 				$y'+b(x)\cdot y=a(x)$ für $y_2$\\
-				
+
 				$y_1 = c\cdot e^{-\int b(x)dx}$\\
 				$y_2 = \int(a(x)e^{\int b(x)dx})dx\cdot e^{-\int b(x)dx}$\\
-				
+
 				$y(x)=y_1+y_2$ = allgemeine Lösung
 			\subsection{Anfangswertproblem}
 				Siehe oben (homogen oder inhomogen)
 			\subsection{DGL 2. Ordnung}
-				\begin{compactenum}	
+				\begin{compactenum}
 					\item Umstellen nach:\\$y''+a_0\cdot y'+a_1\cdot y=b(x)$
 					\item Fälle für $a_0$ und $a_1$ anschauen:
 					\begin{compactenum}
@@ -449,19 +505,5 @@
 					Fall 3: $w\cdot e^{2\lambda x}$
 					\item Partikuläre Lösung: $y(x)=y_h+y_p$
 				\end{compactenum}
-\end{small}
-\end{multicols}
-\begin{multicols}{2}
-\begin{tiny}
-	\section{Sin-Cos-Tan Tabelle}
-		\begin{tabular}{l | c  c  c  c  c  c  c  c  c  c }
-			\noindent
-			$x$ & $0$ & $\frac{1}{6}\pi$ & $\frac{1}{4}\pi$ & $\frac{1}{3}\pi$ & $\frac{1}{2}\pi$ & $\frac{2}{3}\pi$ & $\frac{3}{4}\pi$ & $\frac{5}{6}\pi$ & $\pi$ & $\frac{7}{6}\pi$\\\hline
-			$Grad$ & $0$ & $30$ & $45$ & $60$ & $90$ & $120$ & $135$ & $150$ & $180$ & $210$\\\hline
-			$\sin$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$\\\hline
-			$\cos$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-\frac{1}{2}$ & $-\frac{\sqrt{2}}{2}$ & $-\frac{\sqrt{3}}{2}$ & $-1$ & $-\frac{\sqrt{3}}{2}$\\\hline
-			$\tan$ & $0$ & $\frac{\sqrt{3}}{3}$ & $1$ & $\sqrt{3}$ &$\pm\infty$ & $-\sqrt{3}$ & $-1$ & $-\frac{\sqrt{3}}{3}$ & $0$ & $\frac{\sqrt{3}}{3}$
-		\end{tabular}
-	\end{tiny}
-\end{multicols}
+\end{multicols*}
 \end{document}
